@@ -1,0 +1,22 @@
+{
+  "title": "Boardgame",
+  "description": "The user is presented with a board with several hotspots. By clicking a hotspot he invokes a mini-game.",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 2,
+  "machineName": "H5P.Boardgame",
+  "author": "Amendor AS",
+  "license": "cc-by-sa",
+  "preloadedDependencies": [
+    {"machineName": "H5p.Multichoice", "majorVersion": 1, "minorVersion": 0}
+  ],
+  "preloadedCss": [
+    {"path": "css/h5pBoardgame.css"}
+  ],
+  "preloadedJs": [
+    {"path": "js/h5pBoardgame.js"}
+  ],
+  "init": "h5pBoardgame.init",
+  "w": 630,
+  "h": 410
+}

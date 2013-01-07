@@ -1,0 +1,38 @@
+{
+  "options": {
+    "title": {
+      "name": "Title",
+      "description": "Board game title",
+      "type": "text"
+    },
+    "background": {
+      "name": "Background image",
+      "description": "Image covering the background of the board game.",
+      "type": "image"
+    },
+    "splashScreen": {
+      "name": "Splash screen",
+      "description": "Introduction screen shown while resources are loaded.",
+      "type": "image"
+    }
+    "hotspots": {
+      "name": "Hotspots",
+      "description": "List of hotspots in the game window where questions are found.",
+      "type": "combined",
+      "array": true,
+      "minEntries": 1,
+      "maxEntries": -1,
+      "fields": {
+        "image": {
+          "name": "Hotspot image",
+          "type": "image"
+        },
+        "action": {
+          "name": "Action",
+          "description": "What to do when clicking this hotspot",
+          "type": "action"
+        }
+      }
+    }
+  }
+}
