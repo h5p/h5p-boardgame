@@ -1,0 +1,15 @@
+<div class="boardgame">
+  <style scoped>
+  .boardgame {
+    background: url(<%= background %>);
+    position: relative;
+  }
+  .hotspot {
+    position: absolute;
+  }
+  </style>
+  <% for (var i=0; i<hotspots.length; i++) {
+    var hs = hotspots[i]; %>
+    <div class="hotspot" id="hotspot-<%= i %>" style="top: <%= hs.coords.top %>px; left: <%= hs.coords.left %>px; width: <%= hs.coords.width %>; height: <%= hs.coords.height %>;"></div>
+  <% } %>
+</div>

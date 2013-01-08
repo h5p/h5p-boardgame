@@ -6,30 +6,42 @@
 // ...
 // }
 
-H5P = H5P || {};
+window.H5P = window.H5P || {};
 
 H5P.Boardgame = function (options) {
   if ( !(this instanceof H5P.Boardgame) )
     return new H5P.Boardgame(options);
 
+  var texttemplate = '' +
+
+  '';
+
   var defaults = {
-    title: ""
+    title: "",
+    background: "",
+    splashScreen: "",
+    hotspots: []
   };
-  var template = new EJS({url: '../views/Boardgame.ejs'});
+  var template = new EJS({text: texttemplate});
   var params = jQuery.extend({}, defaults, options);
+  var myDom;
 
   // Function for attaching the multichoice to a DOM element.
-  var _attach = function (targetId) {
-    // TODO: Randomize answers
-
+  var attach = function (targetId) {
     // Render own DOM into target.
     template.update(targetId, params);
+    myDom = jQuery('#' + targetId);
+
     // Set event listeners.
+    // TODO: For each hotspot, add hover and click events.
+
+    // TODO: Start animations
+
+    return this;
   }
 
   return {
-    attach: _attach // Attach to DOM object
-  , options: options // Might be useful to inspect options from construction
+    attach: attach // Attach to DOM object
   , defaults: defaults // Provide defaults for inspection
   };
 }
