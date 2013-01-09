@@ -1,15 +1,35 @@
-<div class="boardgame">
-  <style scoped>
-  .boardgame {
-    background: url(<%= background %>);
-    position: relative;
-  }
-  .hotspot {
-    position: absolute;
-  }
-  </style>
-  <% for (var i=0; i<hotspots.length; i++) {
-    var hs = hotspots[i]; %>
-    <div class="hotspot" id="hotspot-<%= i %>" style="top: <%= hs.coords.top %>px; left: <%= hs.coords.left %>px; width: <%= hs.coords.width %>; height: <%= hs.coords.height %>;"></div>
-  <% } %>
+<style type="text/css">
+.boardgame {
+  position: relative;
+  background: #85e;
+  width: 100%;
+  height: 100%;
+}
+.hotspot {
+  position: absolute;
+  outline: 2px solid purple;
+  z-index: 2;
+}
+.hotspot .info {
+  display: none;
+  z-index: 100;
+}
+.hotspot.hover .info {
+  display: block;
+}
+.action-container {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+}
+.action-container .questionset {
+  float: right;
+  width: 50%;
+  background: white;
+  border: 1px solid #eaea00;
+}
+</style>
+<div class="boardgame" id="boardgame">
 </div>

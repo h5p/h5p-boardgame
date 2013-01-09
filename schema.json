@@ -13,7 +13,7 @@
     "name": "Splash screen",
     "description": "Introduction screen shown while resources are loaded.",
     "type": "image"
-  }
+  },
   "hotspots": {
     "name": "Hotspots",
     "description": "List of hotspots in the game window where questions are found.",
@@ -40,8 +40,11 @@
         "name": "Action",
         "description": "What to do when clicking this hotspot",
         "type": "h5p-library",
-        "allowedLibs": "H5P.QuestionSet"
+        "allowedLibs": ["H5P.QuestionSet"]
       }
     }
+  },
+  "extras": {
+
   }
 }
