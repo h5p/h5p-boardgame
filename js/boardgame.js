@@ -118,6 +118,8 @@ H5P.Boardgame = function (options) {
   if ( !(this instanceof H5P.Boardgame) )
     return new H5P.Boardgame(options);
 
+  var $ = H5P.jQuery;
+
   function HotSpot(dom, hs_params) {
     var defaults = {
       "title": "Hotspot",
@@ -126,7 +128,7 @@ H5P.Boardgame = function (options) {
       "action": ""
     };
     var that = this;
-    var params = jQuery.extend({}, defaults, hs_params);
+    var params = $.extend({}, defaults, hs_params);
 
     // Render HotSpot DOM elements
     var hsd = $('<div class="hotspot"></div>').css({
@@ -150,9 +152,14 @@ H5P.Boardgame = function (options) {
     }).click(function (ev) {
       // Start action
       // - Create container
-      $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
+      var $container = $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
       // - Attach action
       that.action.attach('action-container');
+      $(that.action).on('h5pQuestionSetFinished', function (ev) {
+        $('#action-container', dom).remove();
+        // TODO: Trigger further event to boardgame to calculate total score?
+        $(that).trigger('hotspotFinished');
+      });
     });
   }
 
@@ -202,14 +209,14 @@ H5P.Boardgame = function (options) {
     extras: []
   };
   var template = new EJS({text: texttemplate});
-  var params = jQuery.extend({}, defaults, options);
+  var params = $.extend({}, defaults, options);
   var myDom;
 
   // Function for attaching the multichoice to a DOM element.
   var attach = function (targetId) {
     // Render own DOM into target.
     template.update(targetId, params);
-    myDom = jQuery('#' + targetId);
+    myDom = $('#' + targetId);
 
     // Set event listeners.
     // Add hotspots.
@@ -225,8 +232,10 @@ H5P.Boardgame = function (options) {
     return this;
   };
 
-  return {
+  // Masquerade the main object to hide inner properties and functions.
+  var returnObject = {
     attach: attach, // Attach to DOM object
     defaults: defaults // Provide defaults for inspection
   };
+  return returnObject;
 };
