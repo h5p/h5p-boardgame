@@ -131,21 +131,22 @@ H5P.Boardgame = function (options) {
     var params = $.extend({}, defaults, hs_params);
 
     // Render HotSpot DOM elements
-    var hsd = $('<div class="hotspot"></div>').css({
-      left: params.position.x + 'px',
-      top: params.position.y + 'px',
-      width: params.position.w + 'px',
-      height: params.position.h + 'px',
-      backgroundImage: 'url(' + params.image + ')'
-    });
-    hsd.append($('<div class="info"><div class="title">' + params.title + '</div><div class="status"></div></div>'));
+    var $hsd = $('<div class="hotspot"></div>');
+    $hsd.append($('<div class="info"><div class="title">' + params.title + '</div><div class="status"></div><div class="score"></div></div>'));
     // Insert DOM in BoardGame
-    $(".boardgame", dom).append(hsd);
+    $(".boardgame", dom).append($hsd);
+    $hsd.css({
+      left: hs_params.coords.x + 'px',
+      top: hs_params.coords.y + 'px',
+      width: hs_params.coords.w + 'px',
+      height: hs_params.coords.h + 'px',
+      backgroundImage: 'url(' + hs_params.image + ')'
+    });
 
     this.action = new (H5P.classFromName(params.action.machineName))(params.action.options);
 
     // Attach event handlers
-    hsd.hover(function (ev) {
+    $hsd.hover(function (ev) {
       $(this).addClass('hover');
     }, function (ev) {
       $(this).removeClass('hover');
@@ -155,10 +156,16 @@ H5P.Boardgame = function (options) {
       var $container = $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
       // - Attach action
       that.action.attach('action-container');
-      $(that.action).on('h5pQuestionSetFinished', function (ev) {
+      $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
         $('#action-container', dom).remove();
-        // TODO: Trigger further event to boardgame to calculate total score?
-        $(that).trigger('hotspotFinished');
+        // Update score in hotspot info
+        $hsd.find('.score').text(result.score);
+        // Switch background image to passed image.
+        if (result.passed) {
+          $hsd.css({backgroundImage: 'url(' + hs_params.passedImage + ')'});
+        }
+        // Trigger further event to boardgame to calculate total score?
+        $(that).trigger('hotspotFinished', result);
       });
     });
   }
@@ -167,18 +174,28 @@ H5P.Boardgame = function (options) {
 '<style type="text/css">' +
 '.boardgame {' +
 '  position: relative;' +
-'  background: #85e;' +
 '  width: 100%;' +
 '  height: 100%;' +
 '}' +
 '.hotspot {' +
 '  position: absolute;' +
-'  outline: 2px solid purple;' +
 '  z-index: 2;' +
 '}' +
 '.hotspot .info {' +
 '  display: none;' +
 '  z-index: 100;' +
+'  position: relative;' +
+'  top: -50px;' +
+'  left: -10px;' +
+'  background: rgba(255,255,255,0.75);' +
+'  border: 1px solid #333333;' +
+'  border-radius: 5px;' +
+'  width: 120px;' +
+'  height: 45px;' +
+'  padding: 4px;' +
+'  font-weight: bold;' +
+'  font-family: sans-serif;' +
+'  font-size: 120%;' +
 '}' +
 '.hotspot.hover .info {' +
 '  display: block;' +
@@ -210,23 +227,24 @@ H5P.Boardgame = function (options) {
   };
   var template = new EJS({text: texttemplate});
   var params = $.extend({}, defaults, options);
-  var myDom;
+  var $myDom;
 
   // Function for attaching the multichoice to a DOM element.
   var attach = function (targetId) {
     // Render own DOM into target.
     template.update(targetId, params);
-    myDom = $('#' + targetId);
+    $myDom = $('#' + targetId);
+    $('#boardgame').css({backgroundImage: 'url(' + params.background + ')'});
 
     // Set event listeners.
     // Add hotspots.
     for (var i = params.hotspots.length - 1; i >= 0; i--) {
-      var spot = new HotSpot(myDom, params.hotspots[i]);
+      var spot = new HotSpot($myDom, params.hotspots[i]);
     }
 
     // Start extras
     for (var j = params.extras.length - 1; j >= 0; j--) {
-      var a = (H5P.classFromName(params.extras[j].name))(myDom, params.extras[j].options);
+      var a = (H5P.classFromName(params.extras[j].name))($myDom, params.extras[j].options);
     }
 
     return this;
