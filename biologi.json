@@ -10,6 +10,7 @@
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-hav.png",
         "progressType": "dots",
         "questions": [
         {
@@ -130,6 +131,7 @@
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-strand.png",
         "progressType": "dots",
         "questions": [
         {
@@ -230,8 +232,37 @@
     "image": "https://dl.dropbox.com/u/85518977/bio/marker-myr.png",
     "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-myr.png",
     "action": {
-      "machineName": "H5P.MultiChoice",
-      "options": {}
+      "machineName": "H5P.QuestionSet",
+      "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-myr.png",
+        "progressType": "dots",
+        "questions": [
+        {
+          "machineName": "H5P.MultiChoice",
+          "options": {
+            "title": "",
+            "question": "Hvordan puster skilpadder",
+            "singleAnswer": true,
+            "answers": [
+            {
+              "text": "med lunger",
+              "correct": true
+            }, {
+              "text": "med gjeller",
+              "correct": false
+            }, {
+              "text": "gjennom huden",
+              "correct": false
+            }, {
+              "text": "med en kombinasjon av gjeller og hud",
+              "correct": false
+            }, {
+              "text": "med lunger og gjennom huden",
+              "correct": false
+            }]
+          }
+        }]
+      }
     }
   },
   {
@@ -240,8 +271,37 @@
     "image": "https://dl.dropbox.com/u/85518977/bio/marker-vann.png",
     "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-vann.png",
     "action": {
-      "machineName": "H5P.MultiChoice",
-      "options": {}
+      "machineName": "H5P.QuestionSet",
+      "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-vann.png",
+        "progressType": "dots",
+        "questions": [
+        {
+          "machineName": "H5P.MultiChoice",
+          "options": {
+            "title": "",
+            "question": "Hvordan puster skilpadder",
+            "singleAnswer": true,
+            "answers": [
+            {
+              "text": "med lunger",
+              "correct": true
+            }, {
+              "text": "med gjeller",
+              "correct": false
+            }, {
+              "text": "gjennom huden",
+              "correct": false
+            }, {
+              "text": "med en kombinasjon av gjeller og hud",
+              "correct": false
+            }, {
+              "text": "med lunger og gjennom huden",
+              "correct": false
+            }]
+          }
+        }]
+      }
     }
   },
   {
@@ -250,8 +310,37 @@
     "image": "https://dl.dropbox.com/u/85518977/bio/marker-skog.png",
     "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-skog.png",
     "action": {
-      "machineName": "H5P.MultiChoice",
-      "options": {}
+      "machineName": "H5P.QuestionSet",
+      "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-skog.png",
+        "progressType": "dots",
+        "questions": [
+        {
+          "machineName": "H5P.MultiChoice",
+          "options": {
+            "title": "",
+            "question": "Hvordan puster skilpadder",
+            "singleAnswer": true,
+            "answers": [
+            {
+              "text": "med lunger",
+              "correct": true
+            }, {
+              "text": "med gjeller",
+              "correct": false
+            }, {
+              "text": "gjennom huden",
+              "correct": false
+            }, {
+              "text": "med en kombinasjon av gjeller og hud",
+              "correct": false
+            }, {
+              "text": "med lunger og gjennom huden",
+              "correct": false
+            }]
+          }
+        }]
+      }
     }
   },
   {
@@ -260,8 +349,37 @@
     "image": "https://dl.dropbox.com/u/85518977/bio/marker-fjell.png",
     "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-fjell.png",
     "action": {
-      "machineName": "H5P.MultiChoice",
-      "options": {}
+      "machineName": "H5P.QuestionSet",
+      "options": {
+        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-fjell.png",
+        "progressType": "dots",
+        "questions": [
+        {
+          "machineName": "H5P.MultiChoice",
+          "options": {
+            "title": "",
+            "question": "Hvordan puster skilpadder",
+            "singleAnswer": true,
+            "answers": [
+            {
+              "text": "med lunger",
+              "correct": true
+            }, {
+              "text": "med gjeller",
+              "correct": false
+            }, {
+              "text": "gjennom huden",
+              "correct": false
+            }, {
+              "text": "med en kombinasjon av gjeller og hud",
+              "correct": false
+            }, {
+              "text": "med lunger og gjennom huden",
+              "correct": false
+            }]
+          }
+        }]
+      }
     }
   }
   ]
