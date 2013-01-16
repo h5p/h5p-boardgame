@@ -12,6 +12,12 @@
       "options": {
         "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-hav.png",
         "progressType": "dots",
+        "introPage": {
+          "showIntroPage": true,
+          "title": "Uuuuut mot havet",
+          "introduction": "Vi drar ut på fisketur for å undersøke hvordan livet oppfører seg i havet.",
+          "startButtonText": "Start fiskequizen!"
+        },
         "questions": [
         {
           "machineName": "H5P.MultiChoice",

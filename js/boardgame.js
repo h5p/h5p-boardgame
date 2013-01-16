@@ -120,6 +120,9 @@ H5P.Boardgame = function (options) {
 
   var $ = H5P.jQuery;
 
+  //
+  // An internal Object only available to Board games.
+  //
   function HotSpot(dom, hs_params) {
     var defaults = {
       "title": "Hotspot",
