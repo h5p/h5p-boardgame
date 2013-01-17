@@ -116,7 +116,7 @@ window.H5P = window.H5P || {};
 
 H5P.Boardgame = function (options, contentId) {
   if ( !(this instanceof H5P.Boardgame) )
-    return new H5P.Boardgame(options);
+    return new H5P.Boardgame(options, contentId);
 
   var $ = H5P.jQuery;
   var cp = H5P.getContentPath(contentId);
@@ -144,10 +144,10 @@ H5P.Boardgame = function (options, contentId) {
       top: hs_params.coords.y + 'px',
       width: hs_params.coords.w + 'px',
       height: hs_params.coords.h + 'px',
-      backgroundImage: 'url(' + hs_params.image + ')'
+      backgroundImage: 'url(' + cp + hs_params.image + ')'
     });
 
-    this.action = new (H5P.classFromName(params.action.machineName))(params.action.options);
+    this.action = new (H5P.classFromName(params.action.machineName))(params.action.options, contentId);
 
     // Attach event handlers
     $hsd.hover(function (ev) {
@@ -166,7 +166,7 @@ H5P.Boardgame = function (options, contentId) {
         $hsd.find('.score').text(result.score);
         // Switch background image to passed image.
         if (result.passed) {
-          $hsd.css({backgroundImage: 'url(' + hs_params.passedImage + ')'});
+          $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage + ')'});
         }
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
@@ -197,7 +197,7 @@ H5P.Boardgame = function (options, contentId) {
     $myDom = target;
     $myDom.html('<div class="boardgame"></div>');
     $('.boardgame', $myDom).css({
-      backgroundImage: 'url(' + params.background + ')',
+      backgroundImage: 'url(' + cp + params.background + ')',
       width: params.width,
       height: params.height
     });
