@@ -114,11 +114,12 @@ var example_options = {
 
 window.H5P = window.H5P || {};
 
-H5P.Boardgame = function (options) {
+H5P.Boardgame = function (options, contentId) {
   if ( !(this instanceof H5P.Boardgame) )
     return new H5P.Boardgame(options);
 
   var $ = H5P.jQuery;
+  var cp = H5P.getContentPath(contentId);
 
   //
   // An internal Object only available to Board games.
