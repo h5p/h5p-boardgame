@@ -9,6 +9,14 @@
     "description": "Image covering the background of the board game.",
     "type": "image"
   },
+  "width": {
+    "label": "Game width",
+    "type": "integer"
+  },
+  "height": {
+    "label": "Game height",
+    "type": "integer"
+  },
   "splashScreen": {
     "label": "Splash screen",
     "description": "Introduction screen shown while resources are loaded.",

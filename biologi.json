@@ -1,16 +1,16 @@
 {
-  "title": "Board game",
-  "background": "https://dl.dropbox.com/u/85518977/bio/backdrop-empty.jpg",
+  "title": "Biology game",
+  "background": "img/backdrop-empty.jpg",
   "hotspots": [
   {
     "title": "Havet",
-    "coords": {x: 565, y: 262, w: 57, h: 96},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-hav.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-hav.png",
+    "coords": {"x": 565, "y": 262, "w": 57, "h": 96},
+    "image": "img/marker-hav.png",
+    "passedImage": "img/marker-cleared-hav.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-hav.png",
+        "backgroundImage": "img/bg-hav.png",
         "progressType": "dots",
         "introPage": {
           "showIntroPage": true,
@@ -131,13 +131,13 @@
   },
   {
     "title": "Stranda",
-    "coords": {x: 242, y: 412, w: 76, h: 47},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-strand.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-strand.png",
+    "coords": {"x": 242, "y": 412, "w": 76, "h": 47},
+    "image": "img/marker-strand.png",
+    "passedImage": "img/marker-cleared-strand.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-strand.png",
+        "backgroundImage": "img/bg-strand.png",
         "progressType": "dots",
         "questions": [
         {
@@ -234,13 +234,13 @@
   },
   {
     "title": "Myr",
-    "coords": {x: 414, y: 290, w: 72, h: 54},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-myr.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-myr.png",
+    "coords": {"x": 414, "y": 290, "w": 72, "h": 54},
+    "image": "img/marker-myr.png",
+    "passedImage": "img/marker-cleared-myr.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-myr.png",
+        "backgroundImage": "img/bg-myr.png",
         "progressType": "dots",
         "questions": [
         {
@@ -273,13 +273,13 @@
   },
   {
     "title": "Ferskvann",
-    "coords": {x: 257, y: 296, w: 42, h: 33},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-vann.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-vann.png",
+    "coords": {"x": 257, "y": 296, "w": 42, "h": 33},
+    "image": "img/marker-vann.png",
+    "passedImage": "img/marker-cleared-vann.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-vann.png",
+        "backgroundImage": "img/bg-vann.png",
         "progressType": "dots",
         "questions": [
         {
@@ -312,13 +312,13 @@
   },
   {
     "title": "Skogen",
-    "coords": {x: 101, y: 326, w: 89, h: 65},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-skog.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-skog.png",
+    "coords": {"x": 101, "y": 326, "w": 89, "h": 65},
+    "image": "img/marker-skog.png",
+    "passedImage": "img/marker-cleared-skog.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-skog.png",
+        "backgroundImage": "img/bg-skog.png",
         "progressType": "dots",
         "questions": [
         {
@@ -351,13 +351,13 @@
   },
   {
     "title": "Fjellet",
-    "coords": {x: 348, y: 160, w: 142, h: 53},
-    "image": "https://dl.dropbox.com/u/85518977/bio/marker-fjell.png",
-    "passedImage": "https://dl.dropbox.com/u/85518977/bio/marker-cleared-fjell.png",
+    "coords": {"x": 348, "y": 160, "w": 142, "h": 53},
+    "image": "img/marker-fjell.png",
+    "passedImage": "img/marker-cleared-fjell.png",
     "action": {
       "machineName": "H5P.QuestionSet",
       "options": {
-        "backgroundImage": "https://dl.dropbox.com/u/85518977/bio/bg-fjell.png",
+        "backgroundImage": "img/bg-fjell.png",
         "progressType": "dots",
         "questions": [
         {
@@ -389,5 +389,4 @@
     }
   }
   ]
-  // TODO: Progress indicator
 }

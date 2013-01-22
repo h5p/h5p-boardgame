@@ -114,11 +114,12 @@ var example_options = {
 
 window.H5P = window.H5P || {};
 
-H5P.Boardgame = function (options) {
+H5P.Boardgame = function (options, contentId) {
   if ( !(this instanceof H5P.Boardgame) )
-    return new H5P.Boardgame(options);
+    return new H5P.Boardgame(options, contentId);
 
   var $ = H5P.jQuery;
+  var cp = H5P.getContentPath(contentId);
 
   //
   // An internal Object only available to Board games.
@@ -143,10 +144,10 @@ H5P.Boardgame = function (options) {
       top: hs_params.coords.y + 'px',
       width: hs_params.coords.w + 'px',
       height: hs_params.coords.h + 'px',
-      backgroundImage: 'url(' + hs_params.image + ')'
+      backgroundImage: 'url(' + cp + hs_params.image + ')'
     });
 
-    this.action = new (H5P.classFromName(params.action.machineName))(params.action.options);
+    this.action = new (H5P.classFromName(params.action.machineName))(params.action.options, contentId);
 
     // Attach event handlers
     $hsd.hover(function (ev) {
@@ -165,7 +166,7 @@ H5P.Boardgame = function (options) {
         $hsd.find('.score').text(result.score);
         // Switch background image to passed image.
         if (result.passed) {
-          $hsd.css({backgroundImage: 'url(' + hs_params.passedImage + ')'});
+          $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage + ')'});
         }
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
@@ -173,71 +174,33 @@ H5P.Boardgame = function (options) {
     });
   }
 
-  var texttemplate = '' +
-'<style type="text/css">' +
-'.boardgame {' +
-'  position: relative;' +
-'  width: 100%;' +
-'  height: 100%;' +
-'}' +
-'.hotspot {' +
-'  position: absolute;' +
-'  z-index: 2;' +
-'}' +
-'.hotspot .info {' +
-'  display: none;' +
-'  z-index: 100;' +
-'  position: relative;' +
-'  top: -50px;' +
-'  left: -10px;' +
-'  background: rgba(255,255,255,0.75);' +
-'  border: 1px solid #333333;' +
-'  border-radius: 5px;' +
-'  width: 120px;' +
-'  height: 45px;' +
-'  padding: 4px;' +
-'  font-weight: bold;' +
-'  font-family: sans-serif;' +
-'  font-size: 120%;' +
-'}' +
-'.hotspot.hover .info {' +
-'  display: block;' +
-'}' +
-'.action-container {' +
-'  position: relative;' +
-'  z-index: 100;' +
-'  width: 100%;' +
-'  height: 100%;' +
-'  background: rgba(255, 255, 255, 0.8);' +
-'}' +
-'.action-container .questionset {' +
-'  float: right;' +
-'  width: 50%;' +
-'  background: white;' +
-'  border: 1px solid #eaea00;' +
-'}' +
-'</style>' +
-'<div class="boardgame" id="boardgame">' +
-'</div>' +
-  '';
-
   var defaults = {
     title: "",
     background: "",
+    width: 635,
+    height: 500,
     splashScreen: "",
     hotspots: [],
     extras: []
   };
-  var template = new EJS({text: texttemplate});
   var params = $.extend({}, defaults, options);
   var $myDom;
 
   // Function for attaching the multichoice to a DOM element.
-  var attach = function (targetId) {
+  var attach = function (target) {
+    if (typeof(target) == "string") {
+      target = $("#" + target);
+    } else {
+      target = $(target);
+    }
     // Render own DOM into target.
-    template.update(targetId, params);
-    $myDom = $('#' + targetId);
-    $('#boardgame').css({backgroundImage: 'url(' + params.background + ')'});
+    $myDom = target;
+    $myDom.html('<div class="boardgame"></div>');
+    $('.boardgame', $myDom).css({
+      backgroundImage: 'url(' + cp + params.background + ')',
+      width: params.width,
+      height: params.height
+    });
 
     // Set event listeners.
     // Add hotspots.
