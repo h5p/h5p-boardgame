@@ -188,13 +188,14 @@ H5P.Boardgame = function (options, contentId) {
 
   // Function for attaching the multichoice to a DOM element.
   var attach = function (target) {
+    var $target;
     if (typeof(target) == "string") {
-      target = $("#" + target);
+      $target = $("#" + target);
     } else {
-      target = $(target);
+      $target = $(target);
     }
     // Render own DOM into target.
-    $myDom = target;
+    $myDom = $target;
     $myDom.html('<div class="boardgame"></div>');
     $('.boardgame', $myDom).css({
       backgroundImage: 'url(' + cp + params.background + ')',
