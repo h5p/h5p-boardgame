@@ -27,6 +27,7 @@ H5P.Boardgame = function (options, contentId) {
     };
     var that = this;
     var params = $.extend({}, defaults, hs_params);
+    this.passed = false;
 
     // Render HotSpot DOM elements
     var $hsd = $('<div class="hotspot"></div>');
@@ -59,8 +60,11 @@ H5P.Boardgame = function (options, contentId) {
         // Update score in hotspot info
         $hsd.find('.score').text(result.score);
         // Switch background image to passed image.
+        that.passed = result.passed;
         if (result.passed) {
           $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage + ')'});
+        } else {
+          $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage + ')'});
         }
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
@@ -75,10 +79,36 @@ H5P.Boardgame = function (options, contentId) {
     height: 500,
     splashScreen: "",
     hotspots: [],
-    extras: []
+    extras: [],
+    progress: {
+      enabled: false,
+      incremental: true,
+      includeFailed: false,
+      coords: {"x": 0, "y": 0, "w": 200, "h": 100},
+      images: []
+    }
   };
   var params = $.extend({}, defaults, options);
-  var $myDom;
+  var $myDom, $progress;
+  var hotspots = new Array();
+
+  // Update progress meter.
+  var _updateProgress = function () {
+    if (!$progress) {
+      return;
+    }
+
+    // TODO: This only computes for incremental: true, includeFailed: false.
+    var c = 0;
+    for (var i = 0; i < hotspots.length; i++) {
+      if (hotspots[i].passed) {
+        c += 1;
+      }
+    }
+    if (params.progress.images.length > c) {
+      $progress.css({backgroundImage: 'url(' + cp + params.progress.images[c] + ')'});
+    }
+  };
 
   // Function for attaching the multichoice to a DOM element.
   var attach = function (target) {
@@ -101,11 +131,29 @@ H5P.Boardgame = function (options, contentId) {
     // Add hotspots.
     for (var i = params.hotspots.length - 1; i >= 0; i--) {
       var spot = new HotSpot($myDom, params.hotspots[i]);
+      hotspots.push(spot);
+      $(spot).on('hotspotFinished', function (ev, result) {
+        console.log("Hotspot is done. Time to calculate total score so far.");
+        _updateProgress();
+      });
     }
 
     // Start extras
     for (var j = params.extras.length - 1; j >= 0; j--) {
       var a = (H5P.classFromName(params.extras[j].name))($myDom, params.extras[j].options);
+    }
+
+    // Add progress field
+    if (params.progress.enabled) {
+      $progress = $('<div class="progress"></div>');
+      $(".boardgame", $myDom).append($progress);
+      $progress.css({
+        left: params.progress.coords.x + 'px',
+        top: params.progress.coords.y + 'px',
+        width: params.progress.coords.w + 'px',
+        height: params.progress.coords.h + 'px'
+      });
+      _updateProgress();
     }
 
     return this;

@@ -40,8 +40,13 @@
         "description": "Image used for the hotspot when the user has not completed the minigame.",
         "type": "image"
       },
-      "image": {
+      "passedImage": {
         "label": "Hotspot passed image",
+        "description": "Image used for hotspot when user has passed the minigame",
+        "type": "image"
+      },
+      "failedImage": {
+        "label": "Hotspot failed image",
         "description": "Image used for hotspot when user has passed the minigame",
         "type": "image"
       },
