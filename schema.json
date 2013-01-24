@@ -1,69 +1,75 @@
-{
-  "title": {
+[
+  {
+    "name": "title",
+    "type": "text",
     "label": "Title",
-    "description": "Board game title",
-    "type": "text"
+    "description": "Board game title."
   },
-  "background": {
+  {
+    "name": "background",
+    "type": "image",
     "label": "Background image",
-    "description": "Image covering the background of the board game.",
-    "type": "image"
+    "description": "Image covering the background of the board game."
   },
-  "width": {
-    "label": "Game width",
-    "type": "integer"
+  {
+    "name": "size",
+    "type": "dimensions",
+    "label": "Game dimensions",
+    "description": "Enter the size of the game."
   },
-  "height": {
-    "label": "Game height",
-    "type": "integer"
-  },
-  "splashScreen": {
+  {
+    "name": "splashScreen",
+    "type": "image",
     "label": "Splash screen",
-    "description": "Introduction screen shown while resources are loaded.",
-    "type": "image"
+    "description": "Introduction screen shown while resources are loaded."
   },
-  "hotspots": {
+  {
+    "name": "hotspots",
+    "type": "list",
     "label": "Hotspots",
+    "entity": "hotspot",
     "description": "List of hotspots in the game window where questions are found.",
-    "type": "combined",
-    "array": true,
-    "minEntries": 1,
-    "maxEntries": -1,
-    "fields": {
-      "title": {
+    "min": 1,
+    "max": 9,
+    "fields": [
+      {
+        "name": "title",
+        "type": "text",
         "label": "Title",
-        "description": "Title for hotspot. Will be displayed on hover",
-        "type": "text"
-      }
-      "image": {
+        "description": "Title for hotspot. Will be displayed on hover."
+      },
+      {
+        "name": "image",
+        "type": "image",
         "label": "Hotspot image",
-        "description": "Image used for the hotspot when the user has not completed the minigame.",
-        "type": "image"
+        "description": "Image used for the hotspot when the user has not completed the minigame."
       },
-      "passedImage": {
+      {
+        "name": "passedImage",
+        "type": "image",
         "label": "Hotspot passed image",
-        "description": "Image used for hotspot when user has passed the minigame",
-        "type": "image"
+        "description": "Image used for hotspot when user has passed the minigame."
       },
-      "failedImage": {
+      {
+        "name": "failedImage",
+        "type": "image",
         "label": "Hotspot failed image",
-        "description": "Image used for hotspot when user has passed the minigame",
-        "type": "image"
+        "description": "Image used for hotspot when user has passed the minigame."
       },
-      "position": {
-        "label": "Hotspot position",
-        "type": "coords",
-        "dimension": true
+      {
+        "name": "position",
+        "type": "coordinates",
+        "label": "Hotspot position"
       },
-      "action": {
+      {
+        "name": "action",
+        "type": "library",
         "label": "Action",
-        "description": "What to do when clicking this hotspot",
-        "type": "h5p-library",
-        "allowedLibs": ["H5P.QuestionSet"]
+        "description": "What to do when clicking this hotspot.",
+        "allowed": [
+          "H5P.QuestionSet"
+        ]
       }
-    }
-  },
-  "extras": {
-
+    ]
   }
-}
+]
