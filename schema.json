@@ -17,9 +17,24 @@
     "label": "Game height",
     "type": "integer"
   },
-  "splashScreen": {
-    "label": "Splash screen",
-    "description": "Introduction screen shown while resources are loaded.",
+  "introduction": {
+    "label": "Introduction page",
+    "description": "Introduction page shown when game is started",
+    "type": "combined",
+    "fields": {
+      "text": {
+        "type": "text",
+        "description": "Text for the introduction page"
+      },
+      "startButtonText": {
+        "type": "text",
+        "description": "Text for the start/continue button on the intro page"
+      }
+    }
+  },
+  "loadScreen": {
+    "label": "Loading image",
+    "description": "Image shown while resources are loaded.",
     "type": "image"
   },
   "hotspots": {
@@ -50,7 +65,7 @@
         "description": "Image used for hotspot when user has passed the minigame",
         "type": "image"
       },
-      "position": {
+      "coords": {
         "label": "Hotspot position",
         "type": "coords",
         "dimension": true
@@ -64,6 +79,32 @@
     }
   },
   "extras": {
-
+    "label": "Extra stuff",
+    "description": "Extra content provided through H5P libraries"
+  },
+  "progress": {
+    "type": "combined",
+    "fields": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "incremental": {
+        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot.",
+        "type": "boolean"
+      },
+      "includeFailed": {
+        "description": "Whether to count minigame as answered in progress even if not passed.",
+        "type": "boolean"
+      },
+      "coords": {
+        "label": "Progress indicator postion",
+        "type": "coords",
+        "dimension": true
+      },
+      "images": {
+        "type": "image",
+        "array": true
+      }
+    }
   }
 }
