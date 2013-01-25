@@ -1,23 +1,24 @@
-{
-  "title": {
+[
+  {
+    "name": "title",
+    "type": "text",
     "label": "Title",
-    "description": "Board game title",
-    "type": "text"
+    "description": "Board game title."
   },
-  "background": {
+  {
+    "name": "background",
+    "type": "image",
     "label": "Background image",
-    "description": "Image covering the background of the board game.",
-    "type": "image"
+    "description": "Image covering the background of the board game."
   },
-  "width": {
-    "label": "Game width",
-    "type": "integer"
+  {
+    "name": "size",
+    "type": "dimensions",
+    "label": "Game dimensions",
+    "description": "Enter the size of the game."
   },
-  "height": {
-    "label": "Game height",
-    "type": "integer"
-  },
-  "introduction": {
+  {
+    "name": "introduction",
     "label": "Introduction page",
     "description": "Introduction page shown when game is started",
     "type": "combined",
@@ -32,79 +33,93 @@
       }
     }
   },
-  "loadScreen": {
+  {
+    "name": "loadImage",
+    "type": "image",
     "label": "Loading image",
-    "description": "Image shown while resources are loaded.",
-    "type": "image"
+    "description": "Image shown while resources are loaded."
   },
-  "hotspots": {
+  {
+    "name": "hotspots",
+    "type": "list",
     "label": "Hotspots",
+    "entity": "hotspot",
     "description": "List of hotspots in the game window where questions are found.",
-    "type": "combined",
-    "array": true,
-    "minEntries": 1,
-    "maxEntries": -1,
-    "fields": {
-      "title": {
+    "min": 1,
+    "max": 9,
+    "fields": [
+      {
+        "name": "title",
+        "type": "text",
         "label": "Title",
-        "description": "Title for hotspot. Will be displayed on hover",
-        "type": "text"
-      }
-      "image": {
+        "description": "Title for hotspot. Will be displayed on hover."
+      },
+      {
+        "name": "image",
+        "type": "image",
         "label": "Hotspot image",
-        "description": "Image used for the hotspot when the user has not completed the minigame.",
-        "type": "image"
+        "description": "Image used for the hotspot when the user has not completed the minigame."
       },
-      "passedImage": {
+      {
+        "name": "passedImage",
+        "type": "image",
         "label": "Hotspot passed image",
-        "description": "Image used for hotspot when user has passed the minigame",
-        "type": "image"
+        "description": "Image used for hotspot when user has passed the minigame."
       },
-      "failedImage": {
+      {
+        "name": "failedImage",
+        "type": "image",
         "label": "Hotspot failed image",
-        "description": "Image used for hotspot when user has passed the minigame",
-        "type": "image"
+        "description": "Image used for hotspot when user has passed the minigame."
       },
-      "coords": {
-        "label": "Hotspot position",
-        "type": "coords",
-        "dimension": true
+      {
+        "name": "position",
+        "type": "coordinates",
+        "label": "Hotspot position"
       },
-      "action": {
+      {
+        "name": "action",
+        "type": "library",
         "label": "Action",
-        "description": "What to do when clicking this hotspot",
-        "type": "h5p-library",
-        "allowedLibs": ["H5P.QuestionSet"]
+        "description": "What to do when clicking this hotspot.",
+        "allowed": [
+          "H5P.QuestionSet"
+        ]
       }
-    }
+    ]
   },
-  "extras": {
-    "label": "Extra stuff",
-    "description": "Extra content provided through H5P libraries"
-  },
-  "progress": {
+  {
+    "name": "progress",
+    "label": "Progress indicator",
     "type": "combined",
-    "fields": {
-      "enabled": {
+    "fields": [
+      {
+        "name": "enabled",
+        "label": "Enable progress",
         "type": "boolean"
       },
-      "incremental": {
+      { 
+        "name": "incremental",
+        "label": "Incremental progress",
         "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot.",
         "type": "boolean"
       },
-      "includeFailed": {
+      {
+        "name": "includeFailed",
+        "label": "Include Failed",
         "description": "Whether to count minigame as answered in progress even if not passed.",
         "type": "boolean"
       },
-      "coords": {
+      {
+        "name": "position",
         "label": "Progress indicator postion",
-        "type": "coords",
-        "dimension": true
+        "type": "coordinates"
       },
-      "images": {
+      {
+        "name": "images",
         "type": "image",
         "array": true
       }
-    }
+    ]
   }
-}
+]
