@@ -28,10 +28,26 @@
     }
   },
   {
+    "name": "introduction",
+    "label": "Introduction page",
+    "description": "Introduction page shown when game is started",
+    "type": "combined",
+    "fields": {
+      "text": {
+        "type": "text",
+        "description": "Text for the introduction page"
+      },
+      "startButtonText": {
+        "type": "text",
+        "description": "Text for the start/continue button on the intro page"
+      }
+    }
+  },
+  {
     "name": "loadImage",
     "type": "image",
-    "label": "Splash screen",
-    "description": "Introduction screen shown while resources are loaded."
+    "label": "Loading image",
+    "description": "Image shown while resources are loaded."
   },
   {
     "name": "hotspots",
@@ -79,6 +95,40 @@
         "allowed": [
           "H5P.QuestionSet"
         ]
+      }
+    ]
+  },
+  {
+    "name": "progress",
+    "label": "Progress indicator",
+    "type": "combined",
+    "fields": [
+      {
+        "name": "enabled",
+        "label": "Enable progress",
+        "type": "boolean"
+      },
+      { 
+        "name": "incremental",
+        "label": "Incremental progress",
+        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot.",
+        "type": "boolean"
+      },
+      {
+        "name": "includeFailed",
+        "label": "Include Failed",
+        "description": "Whether to count minigame as answered in progress even if not passed.",
+        "type": "boolean"
+      },
+      {
+        "name": "position",
+        "label": "Progress indicator postion",
+        "type": "coordinates"
+      },
+      {
+        "name": "images",
+        "type": "image",
+        "array": true
       }
     ]
   }

@@ -1,0 +1,11 @@
+<div class="boardgame">
+  <% if (introduction) { %>
+  <div class="boardgame-intro open">
+    <div class="bgi-content">
+      <h1><%= title %></h1>
+      <p><%= introduction.text %></p>
+      <button class="bgi-start"><%= introduction.startButtonText %></button>
+    </div>
+  </div>
+  <% } %>
+</div>

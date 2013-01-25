@@ -15,6 +15,19 @@ H5P.Boardgame = function (options, contentId) {
   var $ = H5P.jQuery;
   var cp = H5P.getContentPath(contentId);
 
+  var texttemplate = '' +
+'<div class="boardgame">' +
+'  <% if (introduction) { %>' +
+'  <div class="boardgame-intro open">' +
+'    <div class="bgi-content">' +
+'      <h1><%= title %></h1>' +
+'      <p><%= introduction.text %></p>' +
+'      <button class="bgi-start"><%= introduction.startButtonText %></button>' +
+'    </div>' +
+'  </div>' +
+'  <% } %>' +
+'</div>' +
+  '';
   //
   // An internal Object only available to Board games.
   //
@@ -94,6 +107,8 @@ H5P.Boardgame = function (options, contentId) {
   var $myDom, $progress;
   var hotspots = new Array();
 
+  var template = new EJS({text: texttemplate});
+
   // Update progress meter.
   var _updateProgress = function () {
     if (!$progress) {
@@ -130,11 +145,18 @@ H5P.Boardgame = function (options, contentId) {
       height: params.background.height
     });
 
-    // Set event listeners.
+    // Add click handler to start button.
+    if (params.introduction) {
+      $('.bgi-start', $boardgame).click(function (ev) {
+        $('.boardgame-intro', $boardgame).removeClass('open');
+      });
+    }
+
     // Add hotspots.
     for (var i = params.hotspots.length - 1; i >= 0; i--) {
       var spot = new HotSpot($myDom, params.hotspots[i]);
       hotspots.push(spot);
+      // Set event listeners.
       $(spot).on('hotspotFinished', function (ev, result) {
         console.log("Hotspot is done. Time to calculate total score so far.");
         _updateProgress();
@@ -149,7 +171,7 @@ H5P.Boardgame = function (options, contentId) {
     // Add progress field
     if (params.progress.enabled) {
       $progress = $('<div class="progress"></div>');
-      $(".boardgame", $myDom).append($progress);
+      $boardgame.append($progress);
       $progress.css({
         left: params.progress.coords.x + 'px',
         top: params.progress.coords.y + 'px',
