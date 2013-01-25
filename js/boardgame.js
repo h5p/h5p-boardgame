@@ -74,10 +74,12 @@ H5P.Boardgame = function (options, contentId) {
 
   var defaults = {
     title: "",
-    background: "",
-    width: 635,
-    height: 500,
-    splashScreen: "",
+    background: {
+      path: '', 
+      width: 635, 
+      height: 500
+    },
+    introduction: false,
     hotspots: [],
     extras: [],
     progress: {
@@ -120,11 +122,12 @@ H5P.Boardgame = function (options, contentId) {
     }
     // Render own DOM into target.
     $myDom = $target;
-    $myDom.html('<div class="boardgame"></div>');
-    $('.boardgame', $myDom).css({
-      backgroundImage: 'url(' + cp + params.background + ')',
-      width: params.width,
-      height: params.height
+    $myDom.html(template.render(params));
+    var $boardgame = $('.boardgame', $myDom);
+    $boardgame.css({
+      backgroundImage: 'url(' + cp + params.background.path + ')',
+      width: params.background.width,
+      height: params.background.height
     });
 
     // Set event listeners.

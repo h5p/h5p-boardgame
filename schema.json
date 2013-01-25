@@ -12,13 +12,23 @@
     "description": "Image covering the background of the board game."
   },
   {
-    "name": "size",
-    "type": "dimensions",
-    "label": "Game dimensions",
-    "description": "Enter the size of the game."
+    "name": "introduction",
+    "label": "Introduction page",
+    "description": "Introduction page shown when game is started",
+    "type": "combined",
+    "fields": {
+      "text": {
+        "type": "text",
+        "description": "Text for the introduction page"
+      },
+      "startButtonText": {
+        "type": "text",
+        "description": "Text for the start/continue button on the intro page"
+      }
+    }
   },
   {
-    "name": "splashScreen",
+    "name": "loadImage",
     "type": "image",
     "label": "Splash screen",
     "description": "Introduction screen shown while resources are loaded."
