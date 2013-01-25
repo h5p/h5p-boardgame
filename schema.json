@@ -13,35 +13,23 @@
   },
   {
     "name": "introduction",
+    "type": "group",
     "label": "Introduction page",
     "description": "Introduction page shown when game is started",
-    "type": "combined",
-    "fields": {
-      "text": {
-        "type": "text",
+    "fields": [
+      {
+        "name": "text",
+        "type": "textarea",
+        "label": "Text",
         "description": "Text for the introduction page"
       },
-      "startButtonText": {
-        "type": "text",
+      {
+        "name": "startButtonText",
+        "type": "textarea",
+        "label": "Text",
         "description": "Text for the start/continue button on the intro page"
       }
-    }
-  },
-  {
-    "name": "introduction",
-    "label": "Introduction page",
-    "description": "Introduction page shown when game is started",
-    "type": "combined",
-    "fields": {
-      "text": {
-        "type": "text",
-        "description": "Text for the introduction page"
-      },
-      "startButtonText": {
-        "type": "text",
-        "description": "Text for the start/continue button on the intro page"
-      }
-    }
+    ]
   },
   {
     "name": "loadImage",
