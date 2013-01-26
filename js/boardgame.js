@@ -43,8 +43,7 @@ H5P.Boardgame = function (options, contentId) {
     this.passed = false;
 
     // Render HotSpot DOM elements
-    var $hsd = $('<div class="hotspot"></div>');
-    $hsd.append($('<div class="info"><div class="title">' + params.title + '</div><div class="status"></div><div class="score"></div></div>'));
+    var $hsd = $('<a class="hotspot" title="' + params.title + '" href="#" data-title="' + params.title + '"></a>');
     // Insert DOM in BoardGame
     $(".boardgame", dom).append($hsd);
     $hsd.css({
@@ -71,7 +70,7 @@ H5P.Boardgame = function (options, contentId) {
       $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
         $('#action-container', dom).remove();
         // Update score in hotspot info
-        $hsd.find('.score').text(result.score);
+        $hsd.attr('title', $hsd.attr('data-title') + ': ' + result.score);
         // Switch background image to passed image.
         that.passed = result.passed;
         if (result.passed) {
