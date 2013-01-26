@@ -7,25 +7,7 @@
 .hotspot {
   position: absolute;
   z-index: 2;
-}
-.hotspot .info {
-  display: none;
-  z-index: 100;
-  position: relative;
-  top: -50px;
-  left: -10px;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid #333333;
-  border-radius: 5px;
-  width: 120px;
-  height: 45px;
-  padding: 4px;
-  font-weight: bold;
-  font-family: sans-serif;
-  font-size: 120%;
-}
-.hotspot.hover .info {
-  display: block;
+  cursor: pointer;
 }
 .action-container {
   position: relative;
@@ -72,4 +54,5 @@
   border: 1px solid blue;
   border-radius: 4px;
   padding: 10px 30px;
+  cursor: pointer;
 }
