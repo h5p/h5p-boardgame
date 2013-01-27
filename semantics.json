@@ -1,0 +1,123 @@
+[
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "description": "Board game title."
+  },
+  {
+    "name": "background",
+    "type": "image",
+    "label": "Background image",
+    "description": "Image covering the background of the board game."
+  },
+  {
+    "name": "introduction",
+    "type": "group",
+    "label": "Introduction page",
+    "description": "Introduction page shown when game is started",
+    "fields": [
+      {
+        "name": "text",
+        "type": "textarea",
+        "label": "Text",
+        "description": "Text for the introduction page"
+      },
+      {
+        "name": "startButtonText",
+        "type": "textarea",
+        "label": "Text",
+        "description": "Text for the start/continue button on the intro page"
+      }
+    ]
+  },
+  {
+    "name": "loadImage",
+    "type": "image",
+    "label": "Loading image",
+    "description": "Image shown while resources are loaded."
+  },
+  {
+    "name": "hotspots",
+    "type": "list",
+    "label": "Hotspots",
+    "entity": "hotspot",
+    "description": "List of hotspots in the game window where questions are found.",
+    "min": 1,
+    "max": 9,
+    "fields": [
+      {
+        "name": "title",
+        "type": "text",
+        "label": "Title",
+        "description": "Title for hotspot. Will be displayed on hover."
+      },
+      {
+        "name": "image",
+        "type": "image",
+        "label": "Hotspot image",
+        "description": "Image used for the hotspot when the user has not completed the minigame."
+      },
+      {
+        "name": "passedImage",
+        "type": "image",
+        "label": "Hotspot passed image",
+        "description": "Image used for hotspot when user has passed the minigame."
+      },
+      {
+        "name": "failedImage",
+        "type": "image",
+        "label": "Hotspot failed image",
+        "description": "Image used for hotspot when user has passed the minigame."
+      },
+      {
+        "name": "position",
+        "type": "coordinates",
+        "label": "Hotspot position"
+      },
+      {
+        "name": "action",
+        "type": "library",
+        "label": "Action",
+        "description": "What to do when clicking this hotspot.",
+        "allowed": [
+          "H5P.QuestionSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "progress",
+    "label": "Progress indicator",
+    "type": "combined",
+    "fields": [
+      {
+        "name": "enabled",
+        "label": "Enable progress",
+        "type": "boolean"
+      },
+      { 
+        "name": "incremental",
+        "label": "Incremental progress",
+        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot.",
+        "type": "boolean"
+      },
+      {
+        "name": "includeFailed",
+        "label": "Include Failed",
+        "description": "Whether to count minigame as answered in progress even if not passed.",
+        "type": "boolean"
+      },
+      {
+        "name": "position",
+        "label": "Progress indicator postion",
+        "type": "coordinates"
+      },
+      {
+        "name": "images",
+        "type": "image",
+        "array": true
+      }
+    ]
+  }
+]
