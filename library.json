@@ -19,7 +19,6 @@
   "preloadedJs": [
     {"path": "js/boardgame.js"}
   ],
-  "init": "h5pBoardgame.init",
   "w": 635,
   "h": 500
 }
