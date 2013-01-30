@@ -22,7 +22,7 @@ H5P.Boardgame = function (options, contentId) {
 '    <div class="bgi-content">' +
 '      <h1><%= title %></h1>' +
 '      <p><%= introduction.text %></p>' +
-'      <button class="bgi-start"><%= introduction.startButtonText %></button>' +
+'      <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
 '    </div>' +
 '  </div>' +
 '  <% } %>' +
@@ -87,8 +87,8 @@ H5P.Boardgame = function (options, contentId) {
   var defaults = {
     title: "",
     background: {
-      path: '', 
-      width: 635, 
+      path: '',
+      width: 635,
       height: 500
     },
     introduction: false,
