@@ -80,7 +80,7 @@
         "type": "library",
         "label": "Action",
         "description": "What to do when clicking this hotspot.",
-        "allowed": [
+        "options": [
           "H5P.QuestionSet"
         ]
       }
@@ -88,35 +88,41 @@
   },
   {
     "name": "progress",
+    "type": "group",
     "label": "Progress indicator",
-    "type": "combined",
     "fields": [
       {
         "name": "enabled",
-        "label": "Enable progress",
-        "type": "boolean"
+        "type": "boolean",
+        "label": "Enable progress"
       },
-      { 
+      {
         "name": "incremental",
+        "type": "boolean",
         "label": "Incremental progress",
-        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot.",
-        "type": "boolean"
+        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot."
       },
       {
         "name": "includeFailed",
+        "type": "boolean",
         "label": "Include Failed",
-        "description": "Whether to count minigame as answered in progress even if not passed.",
-        "type": "boolean"
+        "description": "Whether to count minigame as answered in progress even if not passed."
       },
       {
         "name": "position",
-        "label": "Progress indicator postion",
-        "type": "coordinates"
+        "type": "coordinates",
+        "label": "Progress indicator postion"
       },
       {
         "name": "images",
-        "type": "image",
-        "array": true
+        "type": "list",
+        "entity": "image",
+        "fields": [
+          {
+            "name": "image",
+            "type": "image"
+          }
+        ]
       }
     ]
   }
