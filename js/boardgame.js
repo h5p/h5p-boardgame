@@ -34,7 +34,9 @@ H5P.Boardgame = function (options, contentId) {
   function HotSpot(dom, hs_params) {
     var defaults = {
       "title": "Hotspot",
-      "image": "",
+      "image": undefined,
+      "passedImage": undefined,
+      "failedImage": undefined,
       "position": new H5P.Coords(),
       "action": ""
     };
@@ -51,7 +53,7 @@ H5P.Boardgame = function (options, contentId) {
       top: hs_params.coords.y + 'px',
       width: hs_params.coords.w + 'px',
       height: hs_params.coords.h + 'px',
-      backgroundImage: 'url(' + cp + hs_params.image + ')'
+      backgroundImage: 'url(' + cp + hs_params.image.path + ')'
     });
 
     this.action = new (H5P.classFromName(params.action.machineName))(params.action.options, contentId);
@@ -74,9 +76,9 @@ H5P.Boardgame = function (options, contentId) {
         // Switch background image to passed image.
         that.passed = result.passed;
         if (result.passed) {
-          $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage + ')'});
+          $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage.path + ')'});
         } else {
-          $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage + ')'});
+          $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage.path + ')'});
         }
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
@@ -122,7 +124,7 @@ H5P.Boardgame = function (options, contentId) {
       }
     }
     if (params.progress.images.length > c) {
-      $progress.css({backgroundImage: 'url(' + cp + params.progress.images[c] + ')'});
+      $progress.css({backgroundImage: 'url(' + cp + params.progress.images[c].path + ')'});
     }
   };
 
