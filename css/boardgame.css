@@ -1,4 +1,5 @@
 .boardgame {
+  font-family: Arial, "Liberation Sans", sans-serif;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -23,12 +24,12 @@
 .boardgame-intro {
   position: absolute;
   left: 0px;
-  bottom: -385px; /* Mostly out of the screen */
+  bottom: -360px; /* Mostly out of the screen */
   width: 100%;
   height: 435px;
   z-index: 200;
-  background: rgba(0,0,0,0.6);
-  color: white;
+  background: transparent url(img/intro-bg.png);
+  color: #2d2c28;
 
   -webkit-transition: bottom 1s; /* Safari and Chrome */
   -moz-transition: bottom 1s; /* Firefox 4 */
@@ -41,8 +42,21 @@
   z-index: 202;
 }
 
-.bgi-content {
-  padding: 20px;
+.bgi-content h1 {
+  color: white;
+  font-size: 40px;
+  line-height: 78px;
+  margin: 0;
+  padding: 0 16px;
+  text-shadow: 0 0 4px black;
+}
+
+.bgi-content p {
+  padding: 16px;
+  margin: 0;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2d2c28;
 }
 
 .bgi-start {
