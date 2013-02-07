@@ -45,46 +45,51 @@
     "description": "List of hotspots in the game window where questions are found.",
     "min": 1,
     "max": 9,
-    "fields": [
-      {
-        "name": "title",
-        "type": "text",
-        "label": "Title",
-        "description": "Title for hotspot. Will be displayed on hover."
-      },
-      {
-        "name": "image",
-        "type": "image",
-        "label": "Hotspot image",
-        "description": "Image used for the hotspot when the user has not completed the minigame."
-      },
-      {
-        "name": "passedImage",
-        "type": "image",
-        "label": "Hotspot passed image",
-        "description": "Image used for hotspot when user has passed the minigame."
-      },
-      {
-        "name": "failedImage",
-        "type": "image",
-        "label": "Hotspot failed image",
-        "description": "Image used for hotspot when user has passed the minigame."
-      },
-      {
-        "name": "position",
-        "type": "coordinates",
-        "label": "Hotspot position"
-      },
-      {
-        "name": "action",
-        "type": "library",
-        "label": "Action",
-        "description": "What to do when clicking this hotspot.",
-        "options": [
-          "H5P.QuestionSet"
-        ]
-      }
-    ]
+    "field": {
+      "name": "hotspot",
+      "type": "group",
+      "label": "Hotspot",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title",
+          "description": "Title for hotspot. Will be displayed on hover."
+        },
+        {
+          "name": "image",
+          "type": "image",
+          "label": "Hotspot image",
+          "description": "Image used for the hotspot when the user has not completed the minigame."
+        },
+        {
+          "name": "passedImage",
+          "type": "image",
+          "label": "Hotspot passed image",
+          "description": "Image used for hotspot when user has passed the minigame."
+        },
+        {
+          "name": "failedImage",
+          "type": "image",
+          "label": "Hotspot failed image",
+          "description": "Image used for hotspot when user has passed the minigame."
+        },
+        {
+          "name": "position",
+          "type": "coordinates",
+          "label": "Hotspot position"
+        },
+        {
+          "name": "action",
+          "type": "library",
+          "label": "Action",
+          "description": "What to do when clicking this hotspot.",
+          "options": [
+            "H5P.QuestionSet"
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "progress",
@@ -117,12 +122,10 @@
         "name": "images",
         "type": "list",
         "entity": "image",
-        "fields": [
-          {
-            "name": "image",
-            "type": "image"
-          }
-        ]
+        "field": {
+          "name": "image",
+          "type": "image"
+        }
       }
     ]
   },
