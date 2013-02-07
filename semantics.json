@@ -122,12 +122,10 @@
         "name": "images",
         "type": "list",
         "entity": "image",
-        "fields": [
-          {
-            "name": "image",
-            "type": "image"
-          }
-        ]
+        "field": {
+          "name": "image",
+          "type": "image"
+        }
       }
     ]
   },
