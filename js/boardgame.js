@@ -51,8 +51,8 @@ H5P.Boardgame = function (options, contentId) {
     $hsd.css({
       left: hs_params.coords.x + 'px',
       top: hs_params.coords.y + 'px',
-      width: hs_params.coords.w + 'px',
-      height: hs_params.coords.h + 'px',
+      width: hs_params.image.width + 'px',
+      height: hs_params.image.height + 'px',
       backgroundImage: 'url(' + cp + hs_params.image.path + ')'
     });
 
@@ -124,7 +124,11 @@ H5P.Boardgame = function (options, contentId) {
       }
     }
     if (params.progress.images.length > c) {
-      $progress.css({backgroundImage: 'url(' + cp + params.progress.images[c].path + ')'});
+      $progress.css({
+        backgroundImage: 'url(' + cp + params.progress.images[c].image.path + ')',
+        width: params.progress.images[c].image.width + 'px',
+        height: params.progress.images[c].image.height + 'px'
+      });
     }
   };
 
@@ -175,9 +179,7 @@ H5P.Boardgame = function (options, contentId) {
       $boardgame.append($progress);
       $progress.css({
         left: params.progress.coords.x + 'px',
-        top: params.progress.coords.y + 'px',
-        width: params.progress.coords.w + 'px',
-        height: params.progress.coords.h + 'px'
+        top: params.progress.coords.y + 'px'
       });
       _updateProgress();
     }
