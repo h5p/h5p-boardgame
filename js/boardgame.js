@@ -56,7 +56,7 @@ H5P.Boardgame = function (options, contentId) {
       backgroundImage: 'url(' + cp + hs_params.image.path + ')'
     });
 
-    this.action = new (H5P.classFromName(params.action.machineName))(params.action.options, contentId);
+    this.action = new (H5P.classFromName(params.action.library))(params.action.params, contentId);
 
     // Attach event handlers
     $hsd.hover(function (ev) {
