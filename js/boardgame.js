@@ -171,7 +171,7 @@ H5P.Boardgame = function (options, contentId) {
       }).appendTo(".bgi-content .buttons", $myDom);
 
       // Knapp til å begynne på nytt
-      $('.bgi-content .bgi-start', $myDom).text("Try more");
+      $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
 
       // Slutt-text
       $(".boardgame-intro", $myDom).addClass("open");
