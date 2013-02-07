@@ -131,5 +131,31 @@
     "type": "video",
     "label": "End video",
     "description": "Video displayed after the boardgame is finished."
+  },
+  {
+    "name": "endResults",
+    "type": "group",
+    "label": "End results page",
+    "description": "Texts for the end results page shown when the user has finished the game",
+    "fields": [
+      {
+        "name": "text",
+        "type": "textarea",
+        "label": "Text",
+        "description": "Text for the result. @score, @total and @percentage will be substituted in the output."
+      },
+      {
+        "name": "retryButtonText",
+        "type": "textarea",
+        "label": "Text",
+        "description": "Text for the retry button"
+      },
+      {
+        "name": "solutionButtonText",
+        "type": "textarea",
+        "label": "Text",
+        "description": "Text for the solution button. (Used to show the solution)."
+      }
+    ]
   }
 ]

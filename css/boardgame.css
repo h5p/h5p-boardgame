@@ -52,14 +52,13 @@
 }
 
 .bgi-content p {
-  padding: 16px;
-  margin: 0;
+  margin: 1em 3em;
   font-size: 24px;
   line-height: 28px;
   color: #2d2c28;
 }
 
-.bgi-start {
+.bgi-content .buttons {
   position: absolute;
   bottom: 40px;
   right: 40px;

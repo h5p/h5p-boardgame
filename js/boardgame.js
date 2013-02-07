@@ -1,11 +1,5 @@
 // Will render a Board game.
 
-// Options format:
-// {
-//   title: "Title for board game",
-// ...
-// }
-
 window.H5P = window.H5P || {};
 
 H5P.Boardgame = function (options, contentId) {
@@ -17,15 +11,15 @@ H5P.Boardgame = function (options, contentId) {
 
   var texttemplate = '' +
 '<div class="boardgame">' +
-'  <% if (introduction) { %>' +
 '  <div class="boardgame-intro open">' +
 '    <div class="bgi-content">' +
 '      <h1><%= title %></h1>' +
 '      <p><%= introduction.text %></p>' +
-'      <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
+'      <div class="buttons">' +
+'        <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
+'      </div>' +
 '    </div>' +
 '  </div>' +
-'  <% } %>' +
 '</div>' +
   '';
   //
@@ -83,6 +77,7 @@ H5P.Boardgame = function (options, contentId) {
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
       });
+      return false;
     });
   }
 
@@ -93,7 +88,10 @@ H5P.Boardgame = function (options, contentId) {
       width: 635,
       height: 500
     },
-    introduction: false,
+    introduction: {
+      text: "",
+      startButtonText: "Start game"
+    },
     hotspots: [],
     extras: [],
     progress: {
@@ -103,7 +101,12 @@ H5P.Boardgame = function (options, contentId) {
       coords: {"x": 0, "y": 0, "w": 200, "h": 100},
       images: []
     },
-    endVideo: undefined
+    endVideo: undefined,
+    endResults: {
+      text: "You scored @score of @total.<br/>That's @percentage%",
+      solutionButtonText: "Show solution",
+      retryButtonText: "Try again"
+    }
   };
   var params = $.extend({}, defaults, options);
   var $myDom, $progress;
@@ -133,13 +136,45 @@ H5P.Boardgame = function (options, contentId) {
     }
   };
 
+  var _checkIfFinished = function () {
+    var c = 0;
+    for (var i = 0; i < hotspots.length; i++) {
+      if (hotspots[i].passed) {
+        c += 1;
+      }
+    }
+    if (c == hotspots.length) {
+      // We're done. Start endgame
+      _displayEndGame();
+    }
+    return false;
+  };
+
   var _displayEndGame = function () {
     var displayResults = function () {
-      console.log("Display them results!");
-      // Vis ferdig sluttprosent.
+      // console.log("Display them results!");
+      // Calculate final scores
+      var total = 0, score = 0, percentage;
+      for (var i = 0; i < hotspots.length; i++) {
+        var spot = hotspots[i];
+        total += spot.action.totalScore();
+        score += spot.action.getScore();
+      }
+      percentage = Math.floor(100*score/total);
+      // console.log("We got " + score + " of " + total + ". That's " + percentage + "%");
+      var str = params.endResults.text.replace("@score", score).replace("@total", total).replace("@percentage", percentage);
+      $(".bgi-content p", $myDom).html(str);
+
       // Knapp til fasit
+      var $solutionButton = $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+        console.log("So you want to see the solution? No such thing yet!");
+      }).appendTo(".bgi-content .buttons", $myDom);
+
       // Knapp til å begynne på nytt
+      $('.bgi-content .bgi-start', $myDom).text("Try more");
+
       // Slutt-text
+      $(".boardgame-intro", $myDom).addClass("open");
     };
 
     // Show animation if present
@@ -184,15 +219,15 @@ H5P.Boardgame = function (options, contentId) {
       hotspots.push(spot);
       // Set event listeners.
       $(spot).on('hotspotFinished', function (ev, result) {
-        console.log("Hotspot is done. Time to calculate total score so far.");
         _updateProgress();
+        _checkIfFinished();
       });
     }
 
     // Start extras
-    for (var j = params.extras.length - 1; j >= 0; j--) {
-      var a = (H5P.classFromName(params.extras[j].name))($myDom, params.extras[j].options);
-    }
+    // for (var j = params.extras.length - 1; j >= 0; j--) {
+    //   var a = (H5P.classFromName(params.extras[j].name))($myDom, params.extras[j].options);
+    // }
 
     // Add progress field
     if (params.progress.enabled) {
