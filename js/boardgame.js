@@ -102,7 +102,8 @@ H5P.Boardgame = function (options, contentId) {
       includeFailed: false,
       coords: {"x": 0, "y": 0, "w": 200, "h": 100},
       images: []
-    }
+    },
+    endVideo: undefined
   };
   var params = $.extend({}, defaults, options);
   var $myDom, $progress;
@@ -129,6 +130,26 @@ H5P.Boardgame = function (options, contentId) {
         width: params.progress.images[c].image.width + 'px',
         height: params.progress.images[c].image.height + 'px'
       });
+    }
+  };
+
+  var _displayEndGame = function () {
+    var displayResults = function () {
+      console.log("Display them results!");
+      // Vis ferdig sluttprosent.
+      // Knapp til fasit
+      // Knapp til å begynne på nytt
+      // Slutt-text
+    };
+
+    // Show animation if present
+    if (params.endVideo !== undefined) {
+      H5P.playVideo($('.boardgame', $myDom), params.endVideo, cp, function () {
+        displayResults();
+      });
+    } else {
+      // Show result page.
+      displayResults();
     }
   };
 
@@ -190,6 +211,7 @@ H5P.Boardgame = function (options, contentId) {
   // Masquerade the main object to hide inner properties and functions.
   var returnObject = {
     attach: attach, // Attach to DOM object
+    endGame: _displayEndGame,
     defaults: defaults // Provide defaults for inspection
   };
   return returnObject;
