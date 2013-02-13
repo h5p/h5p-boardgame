@@ -129,9 +129,9 @@ H5P.Boardgame = function (options, contentId) {
     }
     if (params.progress.images.length > c) {
       $progress.css({
-        backgroundImage: 'url(' + cp + params.progress.images[c].image.path + ')',
-        width: params.progress.images[c].image.width + 'px',
-        height: params.progress.images[c].image.height + 'px'
+        backgroundImage: 'url(' + cp + params.progress.images[c].path + ')',
+        width: params.progress.images[c].width + 'px',
+        height: params.progress.images[c].height + 'px'
       });
     }
   };
