@@ -202,8 +202,9 @@ H5P.Boardgame = function (options, contentId) {
     var $boardgame = $('.boardgame', $myDom);
     $boardgame.css({
       backgroundImage: 'url(' + cp + params.background.path + ')',
-      width: params.background.width,
-      height: params.background.height
+      width: params.size.width,
+      height: params.size.height,
+      backgroundSize: params.size.width + 'px ' + params.size.height + 'px'
     });
 
     // Add click handler to start button.
