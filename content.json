@@ -4,7 +4,10 @@
   "hotspots": [
     {
       "title": "Step 1",
-      "coords": {x: 45, y: 98},
+      "coords": {
+        "x": 45, 
+        "y": 98
+      },
       "image": "image.url/forspotimage.png",
       "action": {
         "machineName": "H5P.Questionset",
@@ -55,10 +58,11 @@
       }
     }, {
       "title": "Step 2",
-      "coords": {x: 76, y: 234},
+      "coords": {
+        "x": 76, 
+        "y": 234
+      },
       "image": "image.url/foryetanotherspot.png"
     }
   ]
-  // TODO: Progress indicator
-  // TODO: Question Sets
 }

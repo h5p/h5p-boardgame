@@ -12,6 +12,14 @@
     "description": "Image covering the background of the board game."
   },
   {
+    "name": "size",
+    "type": "dimensions",
+    "label": "Size",
+    "description": "The size of the board game.",
+    "default": "background",
+    "max": "background"
+  },
+  {
     "name": "introduction",
     "type": "group",
     "label": "Introduction page",
@@ -75,9 +83,14 @@
           "description": "Image used for hotspot when user has passed the minigame."
         },
         {
-          "name": "position",
+          "name": "coords",
           "type": "coordinates",
-          "label": "Hotspot position"
+          "label": "Hotspot position",
+          "max": "../../size",
+          "default": {
+            "x": 10,
+            "y": 10
+          }
         },
         {
           "name": "action",
@@ -114,9 +127,10 @@
         "description": "Whether to count minigame as answered in progress even if not passed."
       },
       {
-        "name": "position",
+        "name": "coords",
         "type": "coordinates",
-        "label": "Progress indicator postion"
+        "label": "Progress indicator postion",
+        "max": "../size"
       },
       {
         "name": "images",
