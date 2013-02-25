@@ -179,7 +179,7 @@ H5P.Boardgame = function (options, contentId) {
 
     // Show animation if present
     if (params.endVideo !== undefined) {
-      H5P.playVideo($('.boardgame', $myDom), params.endVideo, cp, function () {
+      H5P.playVideo($('.boardgame', $myDom), params.endVideo, params.skipButtonText, cp, function () {
         displayResults();
       });
     } else {
@@ -191,7 +191,7 @@ H5P.Boardgame = function (options, contentId) {
   // Function for attaching the multichoice to a DOM element.
   var attach = function (target) {
     var $target;
-    if (typeof(target) == "string") {
+    if (typeof(target) === "string") {
       $target = $("#" + target);
     } else {
       $target = $(target);

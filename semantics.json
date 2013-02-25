@@ -144,7 +144,17 @@
     ]
   },
   {
-    "name": "endAnimation",
+    "name": "skippable",
+    "type": "boolean",
+    "label": "Skippable"
+  },
+  {
+    "name": "skipButtonText",
+    "type": "text",
+    "label": "Skip button text"
+  },
+  {
+    "name": "endVideo",
     "type": "video",
     "label": "End video",
     "description": "Video displayed after the boardgame is finished."
