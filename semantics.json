@@ -98,7 +98,12 @@
           "label": "Action",
           "description": "What to do when clicking this hotspot.",
           "options": [
-            "H5P.QuestionSet"
+            {
+              "machineName": "H5P.QuestionSet",
+              "majorVersion": 1,
+              "minorVersion": 0,
+              "defaultStyles": true
+            }
           ]
         }
       ]
