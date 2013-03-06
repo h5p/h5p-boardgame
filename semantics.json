@@ -97,14 +97,7 @@
           "type": "library",
           "label": "Action",
           "description": "What to do when clicking this hotspot.",
-          "options": [
-            {
-              "machineName": "H5P.QuestionSet",
-              "majorVersion": 1,
-              "minorVersion": 0,
-              "defaultStyles": true
-            }
-          ]
+          "options": ["H5P.QuestionSet 1.0"]
         }
       ]
     }
