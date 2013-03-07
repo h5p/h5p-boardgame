@@ -5,13 +5,29 @@
   "minorVersion": 0,
   "patchVersion": 10,
   "runnable": 1,
-  "machineName": "H5P.Boardgame",
+  "name": "h5p-boardgame",
+  "class": "H5P.Boardgame",
   "author": "Amendor AS",
   "license": "cc-by-sa",
   "preloadedDependencies": [
-    {"machineName": "EmbeddedJS", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true},
-    {"machineName": "H5P.MultiChoice", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true},
-    {"machineName": "H5P.QuestionSet", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true}
+    {
+      "name": "embedded-js", 
+      "majorVersion": 1, 
+      "minorVersion": 0, 
+      "defaultStyles": true
+    },
+    {
+      "name": "h5p-multi-choice", 
+      "majorVersion": 1, 
+      "minorVersion": 0, 
+      "defaultStyles": true
+    },
+    {
+      "name": "h5p-question-set", 
+      "majorVersion": 1, 
+      "minorVersion": 0, 
+      "defaultStyles": true
+    }
   ],
   "preloadedCss": [
     {"path": "css/boardgame.css"}
@@ -19,6 +35,6 @@
   "preloadedJs": [
     {"path": "js/boardgame.js"}
   ],
-  "w": 635,
-  "h": 500
+  "width": 635,
+  "height": 500
 }
