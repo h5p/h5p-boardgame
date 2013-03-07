@@ -103,3 +103,89 @@
   top: 15px;
   right: 15px;
 }
+
+/* Questionset styles */
+.questionset {
+  width: 535px;
+  height: 400px;
+  padding: 50px;
+  background: transparent url(img/Paper-clean.png);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  -webkit-transition: top 2s, left 2s, -webkit-transform 2s;
+  -moz-transition: top 2s, left 2s, -moz-transform 2s;
+  -o-transition: top 2s, left 2s, -o-transform 2s;
+  transition: top 2s, left 2s, transform 2s;
+}
+
+.questionset.hidden {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 525px;
+  left: 100px;
+}
+
+.qs-footer {
+  position: absolute;
+  bottom: 50px;
+  height: 40px;
+  width: 535px;
+}
+.qs-footer .button {
+  position: absolute;
+  top: 0;
+}
+
+.qs-footer .button.next {
+  right: 0px;
+}
+.qs-footer .button.finish {
+  right: 0px;
+}
+.qs-footer .button.prev {
+  left: 0px;
+}
+
+/* Multichoice styles */
+.multichoice label {
+  cursor: pointer;
+  display: block;
+  padding: 8px 15px;
+  overflow: hidden;
+  color: black;
+}
+.boardgame .multichoice .answer {
+  margin: 5px 0;
+  padding: 0;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#e0e0e0 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+}
+.boardgame .multichoice .answer.selected {
+  background: #dddddd; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #D3DBF5 47%, #B2BEEF 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#D3DBF5), color-stop(100%,#B2BEEF)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%, #D3DBF5 47%, #B2BEEF 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%, #D3DBF5 47%, #B2BEEF 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#D3DBF5 47%, #B2BEEF 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #FFFFFF 0%, #D3DBF5 47%, #B2BEEF 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#B2BEEF',GradientType=0 ); /* IE6-9 */
+}
+.multichoice .answer input {
+  /* Display: none does not work in IE. (at least 8).
+     A none'd checkbox cannot be clicked even by its label. */
+  display: block;
+  position: absolute;
+  left: -9999px;
+}
