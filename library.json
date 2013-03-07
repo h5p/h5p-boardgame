@@ -9,9 +9,9 @@
   "author": "Amendor AS",
   "license": "cc-by-sa",
   "preloadedDependencies": [
-    {"machineName": "EmbeddedJS", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true},
-    {"machineName": "H5P.MultiChoice", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true},
-    {"machineName": "H5P.QuestionSet", "majorVersion": 1, "minorVersion": 0, "defaultStyles": true}
+    {"machineName": "EmbeddedJS", "majorVersion": 1, "minorVersion": 0},
+    {"machineName": "H5P.MultiChoice", "majorVersion": 1, "minorVersion": 0},
+    {"machineName": "H5P.QuestionSet", "majorVersion": 1, "minorVersion": 0}
   ],
   "preloadedCss": [
     {"path": "css/boardgame.css"}
