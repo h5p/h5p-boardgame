@@ -97,7 +97,7 @@
           "type": "library",
           "label": "Action",
           "description": "What to do when clicking this hotspot.",
-          "options": ["H5P.QuestionSet 1.0"]
+          "options": ["H5P.QuestionSet"]
         }
       ]
     }
