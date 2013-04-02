@@ -13,11 +13,22 @@
   },
   {
     "name": "size",
-    "type": "dimensions",
+    "type": "group",
+    "widget": "dimensions",
     "label": "Size",
     "description": "The size of the board game.",
     "default": "background",
-    "max": "background"
+    "max": "background",
+    "fields": [
+      {
+        "name": "x",
+        "type": "number"
+      },
+      {
+        "name": "y",
+        "type": "number"
+      }
+    ]
   },
   {
     "name": "introduction",
@@ -27,13 +38,15 @@
     "fields": [
       {
         "name": "text",
-        "type": "textarea",
+        "type": "text",
+        "widget": "textarea",
         "label": "Text",
         "description": "Text for the introduction page"
       },
       {
         "name": "startButtonText",
-        "type": "textarea",
+        "type": "text",
+        "widget": "textarea",
         "label": "Text",
         "description": "Text for the start/continue button on the intro page"
       }
@@ -84,20 +97,33 @@
         },
         {
           "name": "coords",
-          "type": "coordinates",
+          "type": "group",
+          "widget": "coordinates",
           "label": "Hotspot position",
           "max": "../../size",
           "default": {
             "x": 10,
             "y": 10
-          }
+          },
+          "fields": [
+            {
+              "name": "x",
+              "type": "number"
+            },
+            {
+              "name": "y",
+              "type": "number"
+            }
+          ]
         },
         {
           "name": "action",
           "type": "library",
           "label": "Action",
           "description": "What to do when clicking this hotspot.",
-          "options": ["H5P.QuestionSet"]
+          "options": [
+            "H5P.QuestionSet 1.0"
+          ]
         }
       ]
     }
@@ -126,9 +152,20 @@
       },
       {
         "name": "coords",
-        "type": "coordinates",
+        "type": "group",
+        "widget": "coordinates",
         "label": "Progress indicator postion",
-        "max": "../size"
+        "max": "../size",
+        "fields": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          }
+        ]
       },
       {
         "name": "images",
@@ -165,19 +202,22 @@
     "fields": [
       {
         "name": "text",
-        "type": "textarea",
+        "type": "text",
+        "widget": "textarea",
         "label": "Text",
         "description": "Text for the result. @score, @total and @percentage will be substituted in the output."
       },
       {
         "name": "retryButtonText",
-        "type": "textarea",
+        "type": "text",
+        "widget": "textarea",
         "label": "Text",
         "description": "Text for the retry button"
       },
       {
         "name": "solutionButtonText",
-        "type": "textarea",
+        "type": "text",
+        "widget": "textarea",
         "label": "Text",
         "description": "Text for the solution button. (Used to show the solution)."
       }
