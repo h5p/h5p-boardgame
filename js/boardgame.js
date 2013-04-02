@@ -1,6 +1,6 @@
 // Will render a Board game.
 
-window.H5P = window.H5P || {};
+var H5P = H5P || {};
 
 H5P.Boardgame = function (options, contentId) {
   if ( !(this instanceof H5P.Boardgame) )
