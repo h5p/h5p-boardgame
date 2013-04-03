@@ -5,28 +5,25 @@
   "minorVersion": 0,
   "patchVersion": 10,
   "runnable": 1,
-  "name": "h5p-boardgame",
+  "machineName": "H5P.Boardgame",
   "class": "H5P.Boardgame",
   "author": "Amendor AS",
   "license": "cc-by-sa",
   "preloadedDependencies": [
     {
-      "name": "embedded-js", 
+      "machineName": "EmbeddedJS",
       "majorVersion": 1, 
-      "minorVersion": 0, 
-      "defaultStyles": true
+      "minorVersion": 0
     },
     {
-      "name": "h5p-multi-choice", 
+      "machineName": "H5P.MultiChoice",
       "majorVersion": 1, 
-      "minorVersion": 0, 
-      "defaultStyles": true
+      "minorVersion": 0
     },
     {
-      "name": "h5p-question-set", 
+      "machineName": "H5P.QuestionSet",
       "majorVersion": 1, 
-      "minorVersion": 0, 
-      "defaultStyles": true
+      "minorVersion": 0
     }
   ],
   "preloadedCss": [
