@@ -6,7 +6,6 @@
   "patchVersion": 10,
   "runnable": 1,
   "machineName": "H5P.Boardgame",
-  "class": "H5P.Boardgame",
   "author": "Amendor AS",
   "license": "cc-by-sa",
   "preloadedDependencies": [
