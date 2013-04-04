@@ -1,0 +1,226 @@
+[
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "description": "Board game title."
+  },
+  {
+    "name": "background",
+    "type": "image",
+    "label": "Background image",
+    "description": "Image covering the background of the board game."
+  },
+  {
+    "name": "size",
+    "type": "group",
+    "widget": "dimensions",
+    "label": "Size",
+    "description": "The size of the board game.",
+    "default": "background",
+    "max": "background",
+    "fields": [
+      {
+        "name": "x",
+        "type": "number"
+      },
+      {
+        "name": "y",
+        "type": "number"
+      }
+    ]
+  },
+  {
+    "name": "introduction",
+    "type": "group",
+    "label": "Introduction page",
+    "description": "Introduction page shown when game is started",
+    "fields": [
+      {
+        "name": "text",
+        "type": "text",
+        "widget": "textarea",
+        "label": "Text",
+        "description": "Text for the introduction page"
+      },
+      {
+        "name": "startButtonText",
+        "type": "text",
+        "widget": "textarea",
+        "label": "Text",
+        "description": "Text for the start/continue button on the intro page"
+      }
+    ]
+  },
+  {
+    "name": "loadImage",
+    "type": "image",
+    "label": "Loading image",
+    "description": "Image shown while resources are loaded."
+  },
+  {
+    "name": "hotspots",
+    "type": "list",
+    "label": "Hotspots",
+    "entity": "hotspot",
+    "description": "List of hotspots in the game window where questions are found.",
+    "min": 1,
+    "max": 9,
+    "field": {
+      "name": "hotspot",
+      "type": "group",
+      "label": "Hotspot",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title",
+          "description": "Title for hotspot. Will be displayed on hover."
+        },
+        {
+          "name": "image",
+          "type": "image",
+          "label": "Hotspot image",
+          "description": "Image used for the hotspot when the user has not completed the minigame."
+        },
+        {
+          "name": "passedImage",
+          "type": "image",
+          "label": "Hotspot passed image",
+          "description": "Image used for hotspot when user has passed the minigame."
+        },
+        {
+          "name": "failedImage",
+          "type": "image",
+          "label": "Hotspot failed image",
+          "description": "Image used for hotspot when user has passed the minigame."
+        },
+        {
+          "name": "coords",
+          "type": "group",
+          "widget": "coordinates",
+          "label": "Hotspot position",
+          "max": "../../size",
+          "default": {
+            "x": 10,
+            "y": 10
+          },
+          "fields": [
+            {
+              "name": "x",
+              "type": "number"
+            },
+            {
+              "name": "y",
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "name": "action",
+          "type": "library",
+          "label": "Action",
+          "description": "What to do when clicking this hotspot.",
+          "options": [
+            "H5P.QuestionSet 1.0"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "progress",
+    "type": "group",
+    "label": "Progress indicator",
+    "fields": [
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "label": "Enable progress"
+      },
+      {
+        "name": "incremental",
+        "type": "boolean",
+        "label": "Incremental progress",
+        "description": "Whether to incrementally step through the progress images, or to show image specifically for each hotspot."
+      },
+      {
+        "name": "includeFailed",
+        "type": "boolean",
+        "label": "Include Failed",
+        "description": "Whether to count minigame as answered in progress even if not passed."
+      },
+      {
+        "name": "coords",
+        "type": "group",
+        "widget": "coordinates",
+        "label": "Progress indicator postion",
+        "max": "../size",
+        "fields": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "name": "images",
+        "type": "list",
+        "entity": "image",
+        "field": {
+          "name": "image",
+          "type": "image"
+        }
+      }
+    ]
+  },
+  {
+    "name": "skippable",
+    "type": "boolean",
+    "label": "Skippable"
+  },
+  {
+    "name": "skipButtonText",
+    "type": "text",
+    "label": "Skip button text"
+  },
+  {
+    "name": "endVideo",
+    "type": "video",
+    "label": "End video",
+    "description": "Video displayed after the boardgame is finished."
+  },
+  {
+    "name": "endResults",
+    "type": "group",
+    "label": "End results page",
+    "description": "Texts for the end results page shown when the user has finished the game",
+    "fields": [
+      {
+        "name": "text",
+        "type": "text",
+        "widget": "textarea",
+        "label": "Text",
+        "description": "Text for the result. @score, @total and @percentage will be substituted in the output."
+      },
+      {
+        "name": "retryButtonText",
+        "type": "text",
+        "widget": "textarea",
+        "label": "Text",
+        "description": "Text for the retry button"
+      },
+      {
+        "name": "solutionButtonText",
+        "type": "text",
+        "widget": "textarea",
+        "label": "Text",
+        "description": "Text for the solution button. (Used to show the solution)."
+      }
+    ]
+  }
+]
