@@ -40,14 +40,13 @@
         "name": "text",
         "type": "text",
         "widget": "textarea",
-        "label": "Text",
+        "label": "Intro text",
         "description": "Text for the introduction page"
       },
       {
         "name": "startButtonText",
         "type": "text",
-        "widget": "textarea",
-        "label": "Text",
+        "label": "Start button text",
         "description": "Text for the start/continue button on the intro page"
       }
     ]

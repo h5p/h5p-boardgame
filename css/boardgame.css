@@ -26,7 +26,6 @@
   left: 0px;
   bottom: -360px; /* Mostly out of the screen */
   width: 100%;
-  height: 435px;
   z-index: 200;
   background: transparent url(img/intro-bg.png);
   color: #2d2c28;
