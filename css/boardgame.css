@@ -58,9 +58,10 @@
 }
 
 .bgi-content .buttons {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
+  position: relative;
+  text-align: right;
+  bottom: 20px;
+  right: 0;
   font-size: 150%;
   padding: 10px 30px;
 }
@@ -105,10 +106,7 @@
 
 /* Questionset styles */
 .questionset {
-  width: 535px;
-  height: 400px;
   padding: 50px;
-  background: transparent url(img/Paper-clean.png);
   position: absolute;
   top: 0;
   left: 0;
@@ -132,7 +130,6 @@
   position: absolute;
   bottom: 50px;
   height: 40px;
-  width: 535px;
 }
 .qs-footer .button {
   position: absolute;
