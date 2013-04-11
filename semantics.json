@@ -189,7 +189,7 @@
   },
   {
     "name": "endVideo",
-    "type": "video",
+    "type": "audio",
     "label": "End video",
     "description": "Video displayed after the boardgame is finished."
   },
