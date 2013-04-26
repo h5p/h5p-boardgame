@@ -1,38 +1,42 @@
-// Will render a Board game.
-
 var H5P = H5P || {};
 
+/**
+ * Will render a Board game.
+ *
+ * @param {Array} options
+ * @param {int} contentId
+ * @returns {H5P.Boardgame} Instance
+ */
 H5P.Boardgame = function (options, contentId) {
-  if ( !(this instanceof H5P.Boardgame) )
+  if (!(this instanceof H5P.Boardgame)) {
     return new H5P.Boardgame(options, contentId);
+  }
 
   var $ = H5P.jQuery;
   var cp = H5P.getContentPath(contentId);
 
-  var texttemplate = '' +
-'<div class="boardgame">' +
-'  <div class="boardgame-intro open">' +
-'    <div class="bgi-content">' +
-'      <h1><%= title %></h1>' +
-'      <p><%= introduction.text %></p>' +
-'      <div class="buttons">' +
-'        <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
-'      </div>' +
-'    </div>' +
-'  </div>' +
-'</div>' +
-  '';
-  //
+  var texttemplate =
+          '<div class="boardgame">' +
+          '  <div class="boardgame-intro open">' +
+          '    <div class="bgi-content">' +
+          '      <h1><%= title %></h1>' +
+          '      <p><%= introduction.text %></p>' +
+          '      <div class="buttons">' +
+          '        <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
+          '      </div>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>';
+
   // An internal Object only available to Board games.
-  //
   function HotSpot(dom, hs_params) {
     var defaults = {
-      "title": "Hotspot",
-      "image": undefined,
-      "passedImage": undefined,
-      "failedImage": undefined,
-      "position": new H5P.Coords(),
-      "action": ""
+      title: 'Hotspot',
+      image: undefined, // TODO: Add default images! (in css?)
+      passedImage: undefined,
+      failedImage: undefined,
+      position: new H5P.Coords(),
+      action: ''
     };
     var that = this;
     var params = $.extend({}, defaults, hs_params);
@@ -41,7 +45,7 @@ H5P.Boardgame = function (options, contentId) {
     // Render HotSpot DOM elements
     var $hsd = $('<a class="hotspot" title="' + params.title + '" href="#" data-title="' + params.title + '"></a>');
     // Insert DOM in BoardGame
-    $(".boardgame", dom).append($hsd);
+    $('.boardgame', dom).append($hsd);
     $hsd.css({
       left: hs_params.coords.x + 'px',
       top: hs_params.coords.y + 'px',
@@ -54,14 +58,15 @@ H5P.Boardgame = function (options, contentId) {
     this.action = new (H5P.classFromName(libraryObject.machineName))(params.action.params, contentId);
 
     // Attach event handlers
-    $hsd.hover(function (ev) {
+    $hsd.hover(function () {
       $(this).addClass('hover');
-    }, function (ev) {
+    }, function () {
       $(this).removeClass('hover');
-    }).click(function (ev) {
+    }).click(function () {
       // Start action
       // - Create container
-      var $container = $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
+      $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
+
       // - Attach action
       that.action.attach('action-container');
       $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
@@ -83,15 +88,15 @@ H5P.Boardgame = function (options, contentId) {
   }
 
   var defaults = {
-    title: "",
+    title: '',
     background: {
       path: '',
       width: 635,
       height: 500
     },
     introduction: {
-      text: "",
-      startButtonText: "Start game"
+      text: '',
+      startButtonText: 'Start game'
     },
     hotspots: [],
     extras: [],
@@ -99,20 +104,25 @@ H5P.Boardgame = function (options, contentId) {
       enabled: false,
       incremental: true,
       includeFailed: false,
-      coords: {"x": 0, "y": 0, "w": 200, "h": 100},
+      coords: {
+        x: 0,
+        y: 0,
+        w: 200,
+        h: 100
+      },
       images: []
     },
     endVideo: undefined,
     endResults: {
       text: "You scored @score of @total.<br/>That's @percentage%",
-      solutionButtonText: "Show solution",
-      retryButtonText: "Try again"
+      solutionButtonText: 'Show solution',
+      retryButtonText: 'Try again'
     }
   };
-  var params = $.extend({}, defaults, options);
-  var $myDom, $progress;
-  var hotspots = new Array();
 
+  var params = $.extend(true, {}, defaults, options);
+  var $myDom, $progress;
+  var hotspots = [];
   var template = new EJS({text: texttemplate});
 
   // Update progress meter.
@@ -144,7 +154,7 @@ H5P.Boardgame = function (options, contentId) {
         c += 1;
       }
     }
-    if (c == hotspots.length) {
+    if (c === hotspots.length) {
       // We're done. Start endgame
       _displayEndGame();
     }
@@ -153,7 +163,6 @@ H5P.Boardgame = function (options, contentId) {
 
   var _displayEndGame = function () {
     var displayResults = function () {
-      // console.log("Display them results!");
       // Calculate final scores
       var total = 0, score = 0, percentage;
       for (var i = 0; i < hotspots.length; i++) {
@@ -162,20 +171,20 @@ H5P.Boardgame = function (options, contentId) {
         score += spot.action.getScore();
       }
       percentage = Math.floor(100*score/total);
-      // console.log("We got " + score + " of " + total + ". That's " + percentage + "%");
-      var str = params.endResults.text.replace("@score", score).replace("@total", total).replace("@percentage", percentage);
-      $(".bgi-content p", $myDom).html(str);
+
+      var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
+      $('.bgi-content p', $myDom).html(str);
 
       // Knapp til fasit
-      var $solutionButton = $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
-        console.log("So you want to see the solution? No such thing yet!");
-      }).appendTo(".bgi-content .buttons", $myDom);
+      $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+        // TODO: Show solution
+      }).appendTo('.bgi-content .buttons', $myDom);
 
       // Knapp til å begynne på nytt
       $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
 
       // Slutt-text
-      $(".boardgame-intro", $myDom).addClass("open");
+      $('.boardgame-intro', $myDom).addClass('open');
     };
 
     // Show animation if present
@@ -183,7 +192,8 @@ H5P.Boardgame = function (options, contentId) {
       H5P.playVideo($('.boardgame', $myDom), params.endVideo, params.skipButtonText, cp, function () {
         displayResults();
       });
-    } else {
+    }
+    else {
       // Show result page.
       displayResults();
     }
@@ -192,9 +202,10 @@ H5P.Boardgame = function (options, contentId) {
   // Function for attaching the multichoice to a DOM element.
   var attach = function (target) {
     var $target;
-    if (typeof(target) === "string") {
-      $target = $("#" + target);
-    } else {
+    if (typeof(target) === 'string') {
+      $target = $('#' + target);
+    }
+    else {
       $target = $(target);
     }
     // Render own DOM into target.
@@ -210,8 +221,11 @@ H5P.Boardgame = function (options, contentId) {
 
     // Add click handler to start button.
     if (params.introduction) {
-      $('.bgi-start', $boardgame).click(function (ev) {
-        $('.boardgame-intro', $boardgame).removeClass('open');
+      $('.bgi-start', $boardgame).click(function () {
+        var $bgiContent = $('.bgi-content', $boardgame);
+        var movePercent = ($bgiContent.height() - $bgiContent.children('h1').height()) / (params.size.height / 100);
+
+        $('.boardgame-intro', $boardgame).css('bottom', '-' + movePercent + '%').removeClass('open');
       });
     }
 
