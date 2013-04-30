@@ -42,27 +42,34 @@ H5P.Boardgame = function (options, contentId) {
     var params = $.extend({}, defaults, hs_params);
     this.passed = false;
 
+    if (params.action.library === undefined) {
+      return;
+    }
+
     // Render HotSpot DOM elements
     var $hsd = $('<a class="hotspot" title="' + params.title + '" href="#" data-title="' + params.title + '"></a>');
-    // Insert DOM in BoardGame
-    $('.boardgame', dom).append($hsd);
-    $hsd.css({
+    var HSDstyles = {
       left: hs_params.coords.x + 'px',
-      top: hs_params.coords.y + 'px',
-      width: hs_params.image.width + 'px',
-      height: hs_params.image.height + 'px',
-      backgroundImage: 'url(' + cp + hs_params.image.path + ')'
-    });
+      top: hs_params.coords.y + 'px'
+    };
+
+    if (hs_params.image !== undefined) {
+      HSDstyles.width = hs_params.image.width + 'px';
+      HSDstyles.height = hs_params.image.height + 'px';
+      HSDstyles.background = 'url(' + cp + hs_params.image.path + ') no-repeat';
+    }
+    else {
+      $hsd.addClass('h5p-default');
+    }
+
+    // Insert DOM in BoardGame
+    $('.boardgame', dom).append($hsd.css(HSDstyles));
 
     var libraryObject = H5P.libraryFromString(params.action.library);
     this.action = new (H5P.classFromName(libraryObject.machineName))(params.action.params, contentId);
 
     // Attach event handlers
-    $hsd.hover(function () {
-      $(this).addClass('hover');
-    }, function () {
-      $(this).removeClass('hover');
-    }).click(function () {
+    $hsd.click(function () {
       // Start action
       // - Create container
       $('.boardgame', dom).append('<div class="action-container" id="action-container"></div>');
@@ -79,7 +86,8 @@ H5P.Boardgame = function (options, contentId) {
           $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage.path + ')'});
         } else {
           $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage.path + ')'});
-        }
+        } // TODO !!!!!!
+        //
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
       });
@@ -88,22 +96,19 @@ H5P.Boardgame = function (options, contentId) {
   }
 
   var defaults = {
-    title: '',
-    background: {
-      path: '',
-      width: 635,
-      height: 500
-    },
+    title: 'New game',
     introduction: {
       text: '',
-      startButtonText: 'Start game'
+      startButtonText: 'Start'
+    },
+    size: {
+      x: 640,
+      y: 320
     },
     hotspots: [],
     extras: [],
     progress: {
       enabled: false,
-      incremental: true,
-      includeFailed: false,
       coords: {
         x: 0,
         y: 0,
@@ -125,13 +130,16 @@ H5P.Boardgame = function (options, contentId) {
   var hotspots = [];
   var template = new EJS({text: texttemplate});
 
+  if (H5P.trim(params.introduction.text) === '') {
+    params.introduction.text = '&nbsp;';
+  }
+
   // Update progress meter.
   var _updateProgress = function () {
     if (!$progress) {
       return;
     }
 
-    // TODO: This only computes for incremental: true, includeFailed: false.
     var c = 0;
     for (var i = 0; i < hotspots.length; i++) {
       if (hotspots[i].passed) {
@@ -217,7 +225,7 @@ H5P.Boardgame = function (options, contentId) {
     }
   };
 
-  // Function for attaching the multichoice to a DOM element.
+  // Function for attaching to a DOM element.
   var attach = function (target) {
     var $target;
     if (typeof(target) === 'string') {
@@ -229,13 +237,16 @@ H5P.Boardgame = function (options, contentId) {
     // Render own DOM into target.
     $myDom = $target;
     $myDom.html(template.render(params));
-    var $boardgame = $('.boardgame', $myDom);
-    $boardgame.css({
-      backgroundImage: 'url(' + cp + params.background.path + ')',
+
+    var boardgameStyles = {
       width: params.size.width,
-      height: params.size.height,
-      backgroundSize: params.size.width + 'px ' + params.size.height + 'px'
-    });
+      height: params.size.height
+    };
+    if (params.background !== undefined) {
+      boardgameStyles.background = 'url(' + cp + params.background.path + ') no-repeat';
+      boardgameStyles.backgroundSize = params.size.width + 'px ' + params.size.height + 'px';
+    }
+    var $boardgame = $('.boardgame', $myDom).css(boardgameStyles);
 
     // Add click handler to start button.
     if (params.introduction) {

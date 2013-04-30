@@ -4,12 +4,26 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
+  box-shadow: 0 0 0.75em #7f7f7f;
+  background: #f0f0f0;
 }
 .hotspot {
   position: absolute;
   z-index: 2;
   cursor: pointer;
-  background: no-repeat;
+}
+.hotspot.h5p-default {
+  border-radius: 1em;
+  box-shadow: 0 0 0.5em #7f7f7f;
+  border: 1px solid #f0f0f0;
+  width: 2em;
+  height: 2em;
+  background: #4995e3;
+  background: -moz-linear-gradient(top, #67a6e7, #4085cd);
+  background: -webkit-linear-gradient(top, #67a6e7, #4085cd);
+  background: -o-linear-gradient(top, #67a6e7, #4085cd);
+  background: -ms-linear-gradient(top, #67a6e7, #4085cd);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67a6e7', endColorstr='#4085cd',GradientType=0);
 }
 .action-container {
   position: relative;
@@ -28,7 +42,7 @@
   left: 0;
   width: 100%;
   z-index: 200;
-  background: transparent url(img/intro-bg.png);
+  background: rgba(255, 255, 255, 0.9);
   color: #2d2c28;
 
   -webkit-transition: bottom 0.5s;
@@ -44,10 +58,15 @@
 
 .bgi-content > h1 {
   color: white;
-  font-size: 40px;
-  line-height: 78px;
+  background: rgba(119, 134, 162, 0.8);
+  text-shadow: 0 0 1em #1e2633;
+  box-shadow: 0 0 0.5em #7f7f7f;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 2em;
+  line-height: 2.5em;
   margin: 0;
-  padding: 0 16px;
+  padding: 0 1em;
   text-align: center;
 }
 
