@@ -189,9 +189,27 @@ H5P.Boardgame = function (options, contentId) {
 
     // Show animation if present
     if (params.endVideo !== undefined) {
-      H5P.playVideo($('.boardgame', $myDom), params.endVideo, params.skipButtonText, cp, function () {
+      var $videoContainer = $('.boardgame', $myDom);
+
+      var video = new H5P.Video({
+        files: params.endVideo,
+        fitToWrapper: true,
+        controls: false,
+        autoplay: true
+      }, cp);
+      video.endedCallback = function () {
         displayResults();
-      });
+        $videoContainer.hide();
+      };
+      video.attach($videoContainer);
+
+      if (params.endGame.animations.skipButtonText) {
+        $('<a class="button skip">' + params.endGame.animations.skipButtonText + '</a>').click(function () {
+          video.stop();
+          $videoContainer.hide();
+          displayResults();
+        }).appendTo($videoContainer);
+      }
     }
     else {
       // Show result page.
