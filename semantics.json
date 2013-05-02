@@ -176,7 +176,7 @@
     "fields": [
       {
         "name": "video",
-        "type": "audio",
+        "type": "video",
         "label": "Finished video",
         "optional": true,
         "description": "Video to play before the game results are shown."

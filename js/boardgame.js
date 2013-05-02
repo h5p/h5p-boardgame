@@ -83,11 +83,21 @@ H5P.Boardgame = function (options, contentId) {
         // Switch background image to passed image.
         that.passed = result.passed;
         if (result.passed) {
-          $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage.path + ')'});
+          if (hs_params.passedImage !== undefined) {
+            $hsd.css({backgroundImage: 'url(' + cp + hs_params.passedImage.path + ')'});
+          }
+          else {
+            $hsd.addClass('h5p-passed');
+          }
         } else {
-          $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage.path + ')'});
-        } // TODO !!!!!!
-        //
+          if (hs_params.failedImage !== undefined) {
+            $hsd.css({backgroundImage: 'url(' + cp + hs_params.failedImage.path + ')'});
+          }
+          else {
+            $hsd.addClass('h5p-failed');
+          }
+        }
+
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
       });
@@ -184,23 +194,23 @@ H5P.Boardgame = function (options, contentId) {
       $('.bgi-content p', $myDom).html(str);
 
       // Knapp til fasit
-      $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
-        // TODO: Show solution
-      }).appendTo('.bgi-content .buttons', $myDom);
+//      $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+//        // TODO: Show solution
+//      }).appendTo('.bgi-content .buttons', $myDom); // TODO: Do not append if it already exists.
 
       // Knapp til å begynne på nytt
       $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
 
       // Slutt-text
-      $('.boardgame-intro', $myDom).addClass('open');
+      $('.boardgame-intro', $myDom).addClass('open').css('bottom', '');
     };
 
     // Show animation if present
-    if (params.endVideo !== undefined) {
-      var $videoContainer = $('.boardgame', $myDom);
+    if (params.gameFinished !== undefined) {
+      var $videoContainer = $('<div class="video-container"></div>').appendTo($myDom.children('.boardgame'));
 
       var video = new H5P.Video({
-        files: params.endVideo,
+        files: params.gameFinished.video,
         fitToWrapper: true,
         controls: false,
         autoplay: true
@@ -211,8 +221,8 @@ H5P.Boardgame = function (options, contentId) {
       };
       video.attach($videoContainer);
 
-      if (params.endGame.animations.skipButtonText) {
-        $('<a class="button skip">' + params.endGame.animations.skipButtonText + '</a>').click(function () {
+      if (params.gameFinished.allowSkipVideo) {
+        $('<a class="button skip">' + params.gameFinished.skipButtonText + '</a>').click(function () {
           video.stop();
           $videoContainer.hide();
           displayResults();
