@@ -262,3 +262,7 @@
   position: absolute;
   left: -9999px;
 }
+
+.boardgame .h5p-multichoice > .h5p-show-solution {
+  display: none;
+}
