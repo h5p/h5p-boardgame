@@ -174,7 +174,8 @@
   transition: top 1s, left 1s, transform 1s;
 }
 
-.questionset.hidden {
+.action-container > .questionset.hidden {
+  display: block;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -182,7 +183,14 @@
   top: 150%;
   left: 50%;
 }
-
+.boardgame .h5p-multichoice > .h5p-question {
+  padding-top: 0;
+}
+.boardgame .questionset-results > .buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 .questionset > .title {
   margin: 1em;
 }
@@ -266,6 +274,9 @@
   left: -9999px;
 }
 
+.boardgame .qs-startbutton {
+  font-size: 2.5em;
+}
 .boardgame .questionset-results .qs-solutionbutton {
   display: none;
 }

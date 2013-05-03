@@ -32,7 +32,7 @@ H5P.Boardgame = function (options, contentId) {
   function HotSpot(dom, hs_params) {
     var defaults = {
       title: 'Hotspot',
-      image: undefined, // TODO: Add default images! (in css?)
+      image: undefined,
       passedImage: undefined,
       failedImage: undefined,
       position: new H5P.Coords(),
@@ -102,6 +102,8 @@ H5P.Boardgame = function (options, contentId) {
         // Trigger further event to boardgame to calculate total score?
         $(that).trigger('hotspotFinished', result);
       });
+      var $qs = $('.questionset', dom);
+      $qs.children('.question-container').css('maxHeight', ($qs.height() - $qs.children('.qs-footer').height() - 20) + 'px');
       return false;
     });
   }
