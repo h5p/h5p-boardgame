@@ -78,6 +78,7 @@ H5P.Boardgame = function (options, contentId) {
       that.action.attach('action-container');
       $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
         $('#action-container', dom).remove();
+        that.action.reRender();
         // Update score in hotspot info
         $hsd.attr('title', $hsd.attr('data-title') + ': ' + result.score);
         // Switch background image to passed image.
@@ -194,9 +195,14 @@ H5P.Boardgame = function (options, contentId) {
       $('.bgi-content p', $myDom).html(str);
 
       // Knapp til fasit
-//      $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
-//        // TODO: Show solution
-//      }).appendTo('.bgi-content .buttons', $myDom); // TODO: Do not append if it already exists.
+      if ($('.bgi-solution', $myDom).length === 0) {
+        $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+          for (var i = 0; i < params.hotspots.length; i++) {
+            hotspots[i].action.showSolutions();
+          }
+          slideDown();
+        }).appendTo('.bgi-content .buttons', $myDom);
+      }
 
       // Knapp til å begynne på nytt
       $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
@@ -235,6 +241,12 @@ H5P.Boardgame = function (options, contentId) {
     }
   };
 
+  var slideDown = function () {
+    var $bgiContent = $('.bgi-content', $myDom);
+    var movePercent = ($bgiContent.height() - $bgiContent.children('h1').height()) / (params.size.height / 100);
+    $('.boardgame-intro', $myDom).css('bottom', '-' + movePercent + '%').removeClass('open');
+  };
+
   // Function for attaching to a DOM element.
   var attach = function (target) {
     var $target;
@@ -261,10 +273,7 @@ H5P.Boardgame = function (options, contentId) {
     // Add click handler to start button.
     if (params.introduction) {
       $('.bgi-start', $boardgame).click(function () {
-        var $bgiContent = $('.bgi-content', $boardgame);
-        var movePercent = ($bgiContent.height() - $bgiContent.children('h1').height()) / (params.size.height / 100);
-
-        $('.boardgame-intro', $boardgame).css('bottom', '-' + movePercent + '%').removeClass('open');
+        slideDown();
       });
     }
 

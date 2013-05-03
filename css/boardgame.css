@@ -108,7 +108,7 @@
   padding: 10px 30px;
 }
 
-.boardgame .button {
+.boardgame .button, .boardgame .qs-footer .button, .boardgame .questionset-results .button {
   cursor: pointer;
   color: #2d2c28;
 
@@ -118,6 +118,7 @@
 
   border: 1px solid #808080;
   border-radius: 4px;
+  box-shadow: none;
 
   background: #ffffff; /* Old browsers */
   background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
@@ -129,7 +130,9 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
 }
 
-.boardgame .button:hover {
+.boardgame .button:hover, .boardgame .qs-footer .button:hover, .boardgame .questionset-results .button:hover {
+  color: #2d2c28;
+  box-shadow: none;
   background: #dddddd; /* Old browsers */
   background: -moz-linear-gradient(top,  #ffffff 0%, #e3f5ab 47%, #c2ef6e 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#e3f5ab), color-stop(100%,#c2ef6e)); /* Chrome,Safari4+ */
@@ -263,6 +266,9 @@
   left: -9999px;
 }
 
-.boardgame .h5p-multichoice > .h5p-show-solution {
+.boardgame .questionset-results .qs-solutionbutton {
   display: none;
+}
+.boardgame .questionset-results .qs-finishbutton {
+  display: block;
 }
