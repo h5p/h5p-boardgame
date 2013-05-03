@@ -1,116 +1,118 @@
-[
-  {
-    "label": "Spill tittel",
-    "placeholder": "Mitt fine spill",
-    "description": "Dette er tittelen til spillet du lager"
-  },
-  {
-    "label": "Spill bakgrunn",
-    "description": "Velg en passende bakgrunn til brettspillet ditt"
-  },
-  {
-    "label": "Spillbrettets størrelse",
-    "description": "Spesifiser spillbrettets størrelse i piksler. Forholdet mellom høyde og bredde bør samsvare med bakgrunnsbildet."
-  },
-  {
-    "label": "Introduksjon",
-    "fields": [
-      {
-        "label": "Velkomst og instruksjonstekst",
-        "placeholder": "Velkommen unge reisende! Er du klar til å teste ut dine kunnskaper? Klikk på punktene på kartet for å få opp minigame relatert til punktene.",
-        "description": "Forklar hva brukeren skal gjøre og hva poenget med spillet er."
-      },
-      {
-        "label": "Tekst til start knapp",
-        "default": "Start",
-        "description": "Tekst til knappen brukeren trykker på for å starte spillet."
-      }
-    ]
-  },
-  {
-    "label": "Hotspots",
-    "entity": "hotspot",
-    "description": "Hotspots er mini-spill som plasseres på et brett. Eksempler på minispill er spørsmålssett og hangman.",
-    "field": {
-      "label": "Hotspot",
+{
+  "semantics": [
+    {
+      "label": "Spill tittel",
+      "placeholder": "Mitt fine spill",
+      "description": "Dette er tittelen til spillet du lager"
+    },
+    {
+      "label": "Spill bakgrunn",
+      "description": "Velg en passende bakgrunn til brettspillet ditt"
+    },
+    {
+      "label": "Spillbrettets størrelse",
+      "description": "Spesifiser spillbrettets størrelse i piksler. Forholdet mellom høyde og bredde bør samsvare med bakgrunnsbildet."
+    },
+    {
+      "label": "Introduksjon",
       "fields": [
         {
-          "label": "Tittel",
-          "description": "Gi ditt hotspot et navn."
+          "label": "Velkomst og instruksjonstekst",
+          "placeholder": "Velkommen unge reisende! Er du klar til å teste ut dine kunnskaper? Klikk på punktene på kartet for å få opp minigame relatert til punktene.",
+          "description": "Forklar hva brukeren skal gjøre og hva poenget med spillet er."
         },
         {
-          "label": "Hotspot bilde",
-          "description": "Bildet plasseres på brettet og brukeren klikker på dette for å starte mini-spillet."
+          "label": "Tekst til start knapp",
+          "default": "Start",
+          "description": "Tekst til knappen brukeren trykker på for å starte spillet."
+        }
+      ]
+    },
+    {
+      "label": "Hotspots",
+      "entity": "hotspot",
+      "description": "Hotspots er mini-spill som plasseres på et brett. Eksempler på minispill er spørsmålssett og hangman.",
+      "field": {
+        "label": "Hotspot",
+        "fields": [
+          {
+            "label": "Tittel",
+            "description": "Gi ditt hotspot et navn."
+          },
+          {
+            "label": "Hotspot bilde",
+            "description": "Bildet plasseres på brettet og brukeren klikker på dette for å starte mini-spillet."
+          },
+          {
+            "label": "Hotspot bilde - bestått",
+            "description": "Dette hotspot bildet benyttes for mini-spill brukeren har bestått."
+          },
+          {
+            "label": "Hotspot bilde - ikke bestått",
+            "description": "Dette hotspot bildet benyttes for mini-spill brukeren har prøvd seg på uten å bestå."
+          },
+          {
+            "label": "Hotspot posisjon",
+            "description": "Angi hotspot sin posisjon på spillbrettet i piksler."
+          },
+          {
+            "label": "Mini-spill",
+            "description": "Velg mini-spillet som skal starte når brukeren klikker på dette hotspot."
+          }
+        ]
+      }
+    },
+    {
+      "label": "Fremdriftsindikator",
+      "fields": [
+        {
+          "label": "Slå på fremdriftsindikator"
         },
         {
-          "label": "Hotspot bilde - bestått",
-          "description": "Dette hotspot bildet benyttes for mini-spill brukeren har bestått."
+          "description": "Velg bilder som skal brukes som fremdriftsindikatorer. Like mange bilder som antall hotspots."
         },
         {
-          "label": "Hotspot bilde - ikke bestått",
-          "description": "Dette hotspot bildet benyttes for mini-spill brukeren har prøvd seg på uten å bestå."
+          "label": "Fremdriftsindikatoren sin posisjon",
+          "description": "Angi fremdriftsindikatoren sin posisjon i piksler."
+        }
+      ]
+    },
+    {
+      "label": "Spillets avslutning",
+      "fields": [
+        {
+          "label": "Avslutningsvideo",
+          "description": "Video som spilles av før resultatene vises. Spilleren har på dette tidspunktet bestått alle mini-spill."
         },
         {
-          "label": "Hotspot posisjon",
-          "description": "Angi hotspot sin posisjon på spillbrettet i piksler."
+          "label": "La spilleren hoppe over avslutningsvideoen."
         },
         {
-          "label": "Mini-spill",
-          "description": "Velg mini-spillet som skal starte når brukeren klikker på dette hotspot."
+          "label": "Tekst til \"hopp over\" knappen",
+          "default": "Hopp over",
+          "description": "Tekst til knappen brukeren må trykke på for å hoppe over avslutningsvideoen."
+        }
+      ]
+    },
+    {
+      "label": "Resultat siden",
+      "fields": [
+        {
+          "label": "Resultat tekst",
+          "default": "Du fikk @score av @total poeng.<br/>Det blir @percentage %",
+          "description": "Teksten som angir brukeren sluttresultat. Variabler: @score, @total, @percentage."
+        },
+        {
+          "label": "Tekst for \"Prøv igjen\" knapp",
+          "default": "Prøv igjen",
+          "description": "Tekst til knappen brukeren klikker på for å starte spillet på nytt."
+        },
+        {
+          "label": "Tekst for \"Vis svar\" knappen",
+          "default": "Vis svar",
+          "description": "Tekst til knappen brukeren klikker på for å vise svar."
         }
       ]
     }
-  },
-  {
-    "label": "Fremdriftsindikator",
-    "fields": [
-      {
-        "label": "Slå på fremdriftsindikator"
-      },
-      {
-        "description": "Velg bilder som skal brukes som fremdriftsindikatorer. Like mange bilder som antall hotspots."
-      },
-      {
-        "label": "Fremdriftsindikatoren sin posisjon",
-        "description": "Angi fremdriftsindikatoren sin posisjon i piksler."
-      }
-    ]
-  },
-  {
-    "label": "Spillets avslutning",
-    "fields": [
-      {
-        "label": "Avslutningsvideo",
-        "description": "Video som spilles av før resultatene vises. Spilleren har på dette tidspunktet bestått alle mini-spill."
-      },
-      {
-        "label": "La spilleren hoppe over avslutningsvideoen."
-      },
-      {
-        "label": "Tekst til \"hopp over\" knappen",
-        "default": "Hopp over",
-        "description": "Tekst til knappen brukeren må trykke på for å hoppe over avslutningsvideoen."
-      }
-    ]
-  },
-  {
-    "label": "Resultat siden",
-    "fields": [
-      {
-        "label": "Resultat tekst",
-        "default": "Du fikk @score av @total poeng.<br/>Det blir @percentage %",
-        "description": "Teksten som angir brukeren sluttresultat. Variabler: @score, @total, @percentage."
-      },
-      {
-        "label": "Tekst for \"Prøv igjen\" knapp",
-        "default": "Prøv igjen",
-        "description": "Tekst til knappen brukeren klikker på for å starte spillet på nytt."
-      },
-      {
-        "label": "Tekst for \"Vis svar\" knappen",
-        "default": "Vis svar",
-        "description": "Tekst til knappen brukeren klikker på for å vise svar."
-      }
-    ]
-  }
-]
+  ]
+}
