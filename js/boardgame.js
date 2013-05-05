@@ -14,6 +14,7 @@ H5P.Boardgame = function (options, contentId) {
 
   var $ = H5P.jQuery;
   var cp = H5P.getContentPath(contentId);
+  var finished = false;
 
   var texttemplate =
           '<div class="boardgame">' +
@@ -169,6 +170,9 @@ H5P.Boardgame = function (options, contentId) {
   };
 
   var _checkIfFinished = function () {
+    if (finished) {
+      return false;
+    }
     var c = 0;
     for (var i = 0; i < hotspots.length; i++) {
       if (hotspots[i].passed) {
@@ -178,8 +182,9 @@ H5P.Boardgame = function (options, contentId) {
     if (c === hotspots.length) {
       // We're done. Start endgame
       _displayEndGame();
+      finished = true;
     }
-    return false;
+    return finished;
   };
 
   var _displayEndGame = function () {
