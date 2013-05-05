@@ -135,7 +135,7 @@ H5P.Boardgame = function (options, contentId) {
     endResults: {
       text: "You scored @score of @total.<br/>That's @percentage%",
       solutionButtonText: 'Show solution',
-      retryButtonText: 'Try again'
+      retryButtonText: 'Try more'
     }
   };
 
