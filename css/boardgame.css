@@ -114,7 +114,7 @@
   padding: 10px 30px;
 }
 
-.boardgame .button, .boardgame .qs-footer .button, .boardgame .questionset-results .button {
+.boardgame .button, .boardgame .qs-footer .button, .boardgame .questionset-results .button, .boardgame .button.skip  {
   cursor: pointer;
   color: #2d2c28;
 
@@ -136,7 +136,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
 }
 
-.boardgame .button:hover, .boardgame .qs-footer .button:hover, .boardgame .questionset-results .button:hover {
+.boardgame .button:hover, .boardgame .qs-footer .button:hover, .boardgame .questionset-results .button:hover, .boardgame .button.skip:hover {
   color: #2d2c28;
   box-shadow: none;
   background: #dddddd; /* Old browsers */
