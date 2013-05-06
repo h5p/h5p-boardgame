@@ -103,9 +103,9 @@
           "description": "Teksten som angir brukeren sluttresultat. Variabler: @score, @total, @percentage."
         },
         {
-          "label": "Tekst for \"Prøv igjen\" knapp",
-          "default": "Prøv igjen",
-          "description": "Tekst til knappen brukeren klikker på for å starte spillet på nytt."
+          "label": "Tekst for \"Spill videre\" knapp",
+          "default": "Spill videre",
+          "description": "Tekst til knappen brukeren klikker på for å spille videre."
         },
         {
           "label": "Tekst for \"Vis svar\" knappen",
