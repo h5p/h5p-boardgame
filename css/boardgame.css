@@ -64,13 +64,16 @@
   left: 0;
   width: 100%;
   z-index: 200;
-  background: rgba(255, 255, 255, 0.9);
   color: #2d2c28;
 
   -webkit-transition: bottom 0.5s;
   -moz-transition: bottom 0.5s;
   -o-transition: bottom 0.5s;
   transition: bottom 0.5s;
+
+  background: rgba(255, 255, 255, 0.9);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
+  zoom: 1;
 }
 
 .boardgame-intro.open {
@@ -80,7 +83,6 @@
 
 .bgi-content > h1 {
   color: white;
-  background: rgba(119, 134, 162, 0.8);
   text-shadow: 0 0 1em #1e2633;
   box-shadow: 0 0 0.5em #7f7f7f;
   border-top: 1px solid #f0f0f0;
@@ -90,6 +92,10 @@
   margin: 0;
   padding: 0 1em;
   text-align: center;
+
+  background: rgba(119, 134, 162, 0.8);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC7786A2,endColorstr=#CC7786A2);
+  zoom: 1;
 }
 
 .bgi-content > p {
@@ -160,7 +166,6 @@
 
 /* Questionset styles */
 .questionset {
-  background: rgba(255,255,255,.9);
   position: absolute;
   width: 90%;
   height: 90%;
@@ -172,6 +177,10 @@
   -moz-transition: top 1s, left 1s, -moz-transform 1s;
   -o-transition: top 1s, left 1s, -o-transform 1s;
   transition: top 1s, left 1s, transform 1s;
+
+  background: rgba(255, 255, 255, 0.9);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
+  zoom: 1;
 }
 
 .action-container > .questionset.started.hidden {
@@ -209,8 +218,11 @@
   left: 5%;
   width: 90%;
   height: 90%;
-  background: rgba(255,255,255,.9);
   box-shadow: 0 0 10px 0 #515151;
+
+  background: rgba(255, 255, 255, 0.9);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
+  zoom: 1;
 }
 .qs-footer {
   width: 100%;
@@ -229,12 +241,15 @@
 }
 .questionset-results {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.9);
   top: 5%;
   left: 5%;
   width: 90%;
   height: 90%;
   box-shadow: 0 0 10px 0 #515151;
+
+  background: rgba(255, 255, 255, 0.9);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
+  zoom: 1;
 }
 
 /* Multichoice styles */
