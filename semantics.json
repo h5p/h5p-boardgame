@@ -156,6 +156,7 @@
         "label": "Progress indicator position",
         "description": "Position the progress indicator on the board using pixel coordinates.",
         "max": "../size",
+        "optional": true,
         "fields": [
           {
             "name": "x",
