@@ -166,21 +166,11 @@
 
 /* Questionset styles */
 .questionset {
-  position: absolute;
-  width: 90%;
   height: 90%;
-  top: 5%;
-  left: 5%;
-  box-shadow: 0 0 0.625em 0 #515151;
-
-  -webkit-transition: top 1s, left 1s, -webkit-transform 1s;
-  -moz-transition: top 1s, left 1s, -moz-transform 1s;
-  -o-transition: top 1s, left 1s, -o-transform 1s;
-  transition: top 1s, left 1s, transform 1s;
-
-  background: rgba(255, 255, 255, 0.9);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
-  zoom: 1;
+  -webkit-transition: margin 1s, -webkit-transform 1s;
+  -moz-transition: margin 1s, -moz-transform 1s;
+  -o-transition: margin 1s, -o-transform 1s;
+  transition: margin 1s, transform 1s;
 }
 
 .action-container > .questionset.started.hidden {
@@ -192,8 +182,7 @@
 
 .action-container > .questionset.hidden {
   display: block;
-  top: 150%;
-  left: 50%;
+  margin: 150% 0 0 50%;
 }
 .boardgame .h5p-multichoice > .h5p-question {
   padding-top: 0;
@@ -213,16 +202,7 @@
 }
 
 #action-container > .intro-page {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
   height: 90%;
-  box-shadow: 0 0 10px 0 #515151;
-
-  background: rgba(255, 255, 255, 0.9);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
-  zoom: 1;
 }
 .qs-footer {
   width: 100%;
@@ -240,16 +220,7 @@
   float: left;
 }
 .questionset-results {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
   height: 90%;
-  box-shadow: 0 0 10px 0 #515151;
-
-  background: rgba(255, 255, 255, 0.9);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6FFFFFF,endColorstr=#E6FFFFFF);
-  zoom: 1;
 }
 
 /* Multichoice styles */
