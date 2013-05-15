@@ -167,25 +167,31 @@
 /* Questionset styles */
 .questionset {
   height: 90%;
-  -webkit-transition: margin 1s, -webkit-transform 1s;
-  -moz-transition: margin 1s, -moz-transform 1s;
-  -o-transition: margin 1s, -o-transform 1s;
-  transition: margin 1s, transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -ms-transition: -ms-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
 }
 
 .action-container > .questionset.started.hidden {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg) scale(0,0);
+  -moz-transform: rotate(-45deg) scale(0,0);
+  -ms-transform: rotate(-45deg) scale(0,0);
+  -o-transform: rotate(-45deg) scale(0,0);
+  transform: rotate(-45deg) scale(0,0);
 }
 
 .action-container > .questionset.hidden {
   display: block;
-  margin: 150% 0 0 50%;
 }
 .boardgame .h5p-multichoice > .h5p-question {
-  padding-top: 0;
+  padding: 0 0.5em;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+  filter: none;
 }
 .boardgame .questionset-results > .buttons {
   position: absolute;
@@ -271,4 +277,12 @@
 }
 .boardgame .questionset-results .qs-finishbutton {
   display: block;
+}
+
+.boardgame .questionset, .boardgame .intro-page, .boardgame .questionset-results {
+  margin: 1.5em;
+  box-shadow: 0 0 0.625em 0 #515151;
+  background-color: rgba(255,255,255,.9);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#e6FFFFFF,endColorstr=#e6FFFFFF);
+  zoom: 1;
 }
