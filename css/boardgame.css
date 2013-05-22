@@ -286,3 +286,7 @@
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#e6FFFFFF,endColorstr=#e6FFFFFF);
   zoom: 1;
 }
+
+.boardgame .h5p-multichoice > .h5p-passed, .boardgame .h5p-multichoice > .h5p-failed, .boardgame .h5p-multichoice > .h5p-almost {
+  background-color: transparent;
+}
