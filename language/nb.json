@@ -69,7 +69,7 @@
           "label": "Slå på fremdriftsindikator"
         },
         {
-          "description": "Velg bilder som skal brukes som fremdriftsindikatorer. Det må være like mange bilder som antall hotspots."
+          "description": "Velg bilder som skal brukes som fremdriftsindikatorer. Det må være like mange bilder som antall hotspots samt et bilde når ingen hotspots er fyllt ut."
         },
         {
           "label": "Posisjonen til fremdriftsindikatoren",

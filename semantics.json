@@ -138,10 +138,10 @@
         "label": "Enable progress indicator"
       },
       {
-        "name": "Images",
+        "name": "images",
         "type": "list",
         "entity": "image",
-        "description": "Select images to use as a progress indicator. One for each progress step.",
+        "description": "Select images to use as a progress indicator. One for each progress step plus one for no answers given yet.",
         "field": {
           "name": "image",
           "type": "image",

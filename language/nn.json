@@ -69,7 +69,7 @@
           "label": "Slå på indikatoren for framdrift"
         },
         {
-          "description": "Vel bilete som skal bli brukt som indikator for framdrift. Det må vere like mange bilete som det er hotspots."
+          "description": "Vel bilete som skal bli brukt som indikator for framdrift. Det må vere like mange bilete som det er hotspots pluss et når ingen hotspots er fyllt ut."
         },
         {
           "label": "Posisjonen til indikatoren for framdrift",
