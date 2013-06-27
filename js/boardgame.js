@@ -56,7 +56,7 @@ H5P.Boardgame = function (options, contentId) {
     if (hs_params.image !== undefined) {
       HSDstyles.width = hs_params.image.width + 'px';
       HSDstyles.height = hs_params.image.height + 'px';
-      HSDstyles.background = 'url(' + H5P.getPath(contentId, hs_params.image.path) + ') no-repeat';
+      HSDstyles.background = 'url(' + H5P.getPath(hs_params.image.path, contentId) + ') no-repeat';
     }
     else {
       $hsd.addClass('h5p-default');
@@ -85,14 +85,14 @@ H5P.Boardgame = function (options, contentId) {
         that.passed = result.passed;
         if (result.passed) {
           if (hs_params.passedImage !== undefined) {
-            $hsd.css({backgroundImage: 'url(' + H5P.getPath(contentId, hs_params.passedImage.path) + ')'});
+            $hsd.css({backgroundImage: 'url(' + H5P.getPath(hs_params.passedImage.path, contentId) + ')'});
           }
           else {
             $hsd.addClass('h5p-passed');
           }
         } else {
           if (hs_params.failedImage !== undefined) {
-            $hsd.css({backgroundImage: 'url(' + H5P.getPath(contentId, hs_params.failedImage.path) + ')'});
+            $hsd.css({backgroundImage: 'url(' + H5P.getPath(hs_params.failedImage.path, contentId) + ')'});
           }
           else {
             $hsd.addClass('h5p-failed');
@@ -161,7 +161,7 @@ H5P.Boardgame = function (options, contentId) {
     }
     if (params.progress.images.length > c) {
       $progress.css({
-        backgroundImage: 'url(' + H5P.getPath(contentId, params.progress.images[c].path) + ')',
+        backgroundImage: 'url(' + H5P.getPath(params.progress.images[c].path, contentId) + ')',
         width: params.progress.images[c].width + 'px',
         height: params.progress.images[c].height + 'px'
       });
@@ -271,7 +271,7 @@ H5P.Boardgame = function (options, contentId) {
       height: params.size.height
     };
     if (params.background !== undefined) {
-      boardgameStyles.background = 'url(' + H5P.getPath(contentId, params.background.path) + ') no-repeat';
+      boardgameStyles.background = 'url(' + H5P.getPath(params.background.path, contentId) + ') no-repeat';
       boardgameStyles.backgroundSize = params.size.width + 'px ' + params.size.height + 'px';
     }
     var $boardgame = $('.boardgame', $myDom).css(boardgameStyles);
