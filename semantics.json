@@ -40,7 +40,7 @@
       {
         "name": "text",
         "type": "text",
-        "widget": "textarea",
+        "widget": "html",
         "label": "Welcome and instruction text",
         "optional": true,
         "placeholder": "Greetings young traveler! Are you ready to test your knowledge about the arctic?",
