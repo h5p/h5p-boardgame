@@ -40,17 +40,15 @@
       {
         "name": "text",
         "type": "text",
-        "widget": "html",
+        "widget": "textarea",
         "label": "Welcome and instruction text",
         "optional": true,
         "placeholder": "Greetings young traveler! Are you ready to test your knowledge about the arctic?",
         "description": "Explain what the user should do and what the point of the game is.",
         "tags": [
-          "p",
           "br",
           "strong",
-          "em",
-          "table"
+          "em"
         ]
       },
       {
