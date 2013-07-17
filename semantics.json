@@ -207,6 +207,7 @@
         "type": "text",
         "widget": "html",
         "tags": ["strong", "em", "sub", "sup"],
+        "enterMode": "p",
         "label": "Result text",
         "default": "You scored @score of @total. That's @percentage %",
         "description": "The text explaining the game score. Variables: @score, @total, @percentage."
