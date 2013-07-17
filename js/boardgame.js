@@ -39,7 +39,7 @@ H5P.Boardgame = function (options, contentId) {
           '  <div class="boardgame-intro open">' +
           '    <div class="bgi-content">' +
           '      <h1><%= title %></h1>' +
-          '      <p><%= introduction.text %></p>' +
+          '      <div class="h5p-bg-intro"><%= introduction.text %></div>' +
           '      <div class="buttons">' +
           '        <a class="button bgi-start"><%= introduction.startButtonText %></a>' +
           '      </div>' +
@@ -217,7 +217,7 @@ H5P.Boardgame = function (options, contentId) {
       percentage = Math.floor(100*score/total);
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
-      $('.bgi-content p', $myDom).html(str);
+      $('.h5p-bg-intro', $myDom).html(str);
 
       // Knapp til fasit
       if ($('.bgi-solution', $myDom).length === 0) {
