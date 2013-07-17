@@ -40,16 +40,12 @@
       {
         "name": "text",
         "type": "text",
-        "widget": "textarea",
+        "widget": "html",
+        "tags": ["strong", "em", "sub", "sup"],
         "label": "Welcome and instruction text",
         "optional": true,
         "placeholder": "Greetings young traveler! Are you ready to test your knowledge about the arctic?",
-        "description": "Explain what the user should do and what the point of the game is.",
-        "tags": [
-          "br",
-          "strong",
-          "em"
-        ]
+        "description": "Explain what the user should do and what the point of the game is."
       },
       {
         "name": "startButtonText",
@@ -209,15 +205,11 @@
       {
         "name": "text",
         "type": "text",
-        "widget": "textarea",
+        "widget": "html",
+        "tags": ["strong", "em", "sub", "sup"],
         "label": "Result text",
-        "default": "You scored @score of @total.<br/>That's @percentage %",
-        "description": "The text explaining the game score. Variables: @score, @total, @percentage.",
-        "tags": [
-          "br",
-          "strong",
-          "em"
-        ]
+        "default": "You scored @score of @total. That's @percentage %",
+        "description": "The text explaining the game score. Variables: @score, @total, @percentage."
       },
       {
         "name": "retryButtonText",
