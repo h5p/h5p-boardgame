@@ -42,6 +42,7 @@
         "type": "text",
         "widget": "html",
         "tags": ["strong", "em", "sub", "sup"],
+        "enterMode": "p",
         "label": "Welcome and instruction text",
         "optional": true,
         "placeholder": "Greetings young traveler! Are you ready to test your knowledge about the arctic?",
