@@ -106,12 +106,10 @@
 }
 
 .bgi-content .buttons {
-  position: relative;
   text-align: right;
-  bottom: 20px;
-  right: 0;
   font-size: 150%;
   padding: 10px 30px;
+  margin-top: 0.5em;
 }
 
 .boardgame .button, .boardgame .qs-footer .button, .boardgame .questionset-results .button, .boardgame .button.skip  {
