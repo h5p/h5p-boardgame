@@ -85,6 +85,9 @@ H5P.Boardgame = function (options, contentId) {
     $('.boardgame', dom).append($hsd.css(HSDstyles));
 
     var libraryObject = H5P.libraryFromString(params.action.library);
+    $.extend(params.action.params, {
+      postUserStatistics: false
+    });
     this.action = new (H5P.classFromName(libraryObject.machineName))(params.action.params, contentId);
 
     // Attach event handlers
@@ -154,7 +157,8 @@ H5P.Boardgame = function (options, contentId) {
       text: "You scored @score of @total.<br/>That's @percentage%",
       solutionButtonText: 'Show solution',
       retryButtonText: 'Try more'
-    }
+    },
+    postUserStatistics: (H5P.postUserStatistics === true)
   };
 
   var params = $.extend(true, {}, defaults, options);
@@ -215,6 +219,10 @@ H5P.Boardgame = function (options, contentId) {
         score += spot.action.getScore();
       }
       percentage = Math.floor(100*score/total);
+
+      if (params.postUserStatistics === true) {
+        H5P.setFinished(contentId, score, total);
+      }
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
