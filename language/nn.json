@@ -14,6 +14,10 @@
       "description": "Spesifiser spelbrettet sin storleik i pikslar. Proporsjonane for høgde og breidde bør samsvare med bakgrunnsbiletet."
     },
     {
+      "label": "Slå på skygge rundt brettet",
+      "description": "Hvis slått på tar spelet mer plass enn det 'Størrelse til spelbrettet' antydar"
+    },
+    {
       "label": "Introduksjon",
       "fields": [
         {

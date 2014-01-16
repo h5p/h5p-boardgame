@@ -33,6 +33,14 @@
     ]
   },
   {
+    "name": "shadow",
+    "type": "boolean",
+    "label": "Enable dropshadow",
+    "description": "Enable a drop shadow around the board. If enabled the board takes up more space than the board size suggests",
+    "default": true,
+    "optional": true
+  },
+  {
     "name": "introduction",
     "type": "group",
     "label": "Game introduction",

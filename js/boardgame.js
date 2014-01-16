@@ -35,7 +35,7 @@ H5P.Boardgame = function (options, contentId) {
   var finished = false;
 
   var texttemplate =
-          '<div class="boardgame">' +
+          '<div class="<%= classes %>">' +
           '  <div class="boardgame-intro open">' +
           '    <div class="bgi-content">' +
           '      <h1><%= title %></h1>' +
@@ -158,10 +158,18 @@ H5P.Boardgame = function (options, contentId) {
       solutionButtonText: 'Show solution',
       retryButtonText: 'Try more'
     },
-    postUserStatistics: (H5P.postUserStatistics === true)
+    postUserStatistics: (H5P.postUserStatistics === true),
+    shadow: true
   };
 
   var params = $.extend(true, {}, defaults, options);
+
+  params.classes = 'boardgame'
+
+  if (params.shadow) {
+    params.classes += ' shadow';
+  }
+
   var $myDom, $progress;
   var hotspots = [];
   var template = new EJS({text: texttemplate});
