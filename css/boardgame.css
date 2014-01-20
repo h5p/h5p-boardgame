@@ -90,8 +90,8 @@
   box-shadow: 0 0 0.5em #7f7f7f;
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
-  font-size: 2em;
-  line-height: 2.5em;
+  font-size: 1.7em;
+  line-height: 2em;
   margin: 0;
   padding: 0 1em;
   text-align: center;
@@ -103,8 +103,8 @@
 
 .bgi-content p {
   margin: 1em 3em;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 24px;
   color: #2d2c28;
 }
 
