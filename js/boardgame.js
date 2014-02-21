@@ -54,7 +54,6 @@ H5P.Boardgame = function (options, contentId) {
       image: undefined,
       passedImage: undefined,
       failedImage: undefined,
-      position: new H5P.Coords(),
       action: ''
     };
     var that = this;
