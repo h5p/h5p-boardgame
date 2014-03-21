@@ -38,7 +38,7 @@ H5P.Boardgame = function (options, contentId) {
       action: ''
     };
     var that = this;
-    var params = $.extend({}, defaults, hs_params);
+    var params = $.extend({}, defaults, hs_params); // TODO: Why not just extend defaults with hs_params? I don't think we need defaults later.
     this.passed = false;
 
     if (params.action.library === undefined) {
@@ -327,12 +327,60 @@ H5P.Boardgame = function (options, contentId) {
 
     return this;
   };
+  
+  /**
+   * Gather copyright information for the current content.
+   *
+   * @returns {H5P.ContentCopyrights}
+   */
+  var getCopyrights = function () {
+    var info = new H5P.ContentCopyrights();
+
+    // Background
+    if (params.background.copyright !== undefined) {
+      var background = new H5P.MediaCopyright(params.background.copyright);
+      background.setThumbnail(new H5P.Thumbnail(H5P.getPath(params.background.path, contentId), params.background.width, params.background.height));
+      info.addMedia(background);
+    }
+    
+    // Hotspots
+    for (var i = 0; i < hotspots.length; i++) {
+      var hotspotInstance = hotspots[i].action;
+      if (hotspotInstance.getCopyrights !== undefined) {
+        var hotRights = hotspotInstance.getCopyrights();
+        if (hotRights !== undefined) {
+          hotRights.setLabel('Hotspot ' + (i+1)); // TODO: Change
+          info.addContent(hotRights);
+        }
+      }
+    }
+    
+    // Progress images
+    for (var i = 0; i < params.progress.images.length; i++) {
+       var image = params.progress.images[i];
+       if (image.copyright !== undefined) {
+          var mc = new H5P.MediaCopyright(image.copyright);
+          mc.setThumbnail(new H5P.Thumbnail(H5P.getPath(image.path, contentId), image.width, image.height));
+          info.addMedia(mc);
+       }
+    }
+    
+    // Finished video
+    var video = params.gameFinished.video[0];
+    if (video.copyright !== undefined) {
+      info.addMedia(new H5P.MediaCopyright(video.copyright));
+    }
+  
+    return info;
+  };
 
   // Masquerade the main object to hide inner properties and functions.
   var returnObject = {
+    $: $(this),
     attach: attach, // Attach to DOM object
     endGame: _displayEndGame,
-    defaults: defaults // Provide defaults for inspection
-  };
+    defaults: defaults, // Provide defaults for inspection
+    getCopyrights: getCopyrights
+  }
   return returnObject;
 };
