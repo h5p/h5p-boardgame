@@ -324,15 +324,19 @@ H5P.Boardgame = function (options, contentId) {
       });
       _updateProgress();
     }
-
+    
+    this.$.trigger('resize');
+    
     return this;
   };
 
   // Masquerade the main object to hide inner properties and functions.
   var returnObject = {
+    $: $(this),
     attach: attach, // Attach to DOM object
     endGame: _displayEndGame,
     defaults: defaults // Provide defaults for inspection
   };
+  
   return returnObject;
 };
