@@ -319,7 +319,7 @@ H5P.Boardgame = function (options, contentId) {
     }
 
     // Add hotspots.
-    for (var i = params.hotspots.length - 1; i >= 0; i--) {
+    for (var i = 0; i < params.hotspots.length; i++) {
       var spot = new HotSpot($myDom, params.hotspots[i]);
       hotspots.push(spot);
       // Set event listeners.
