@@ -224,14 +224,14 @@
         "name": "retryButtonText",
         "type": "text",
         "label": "Retry button text",
-        "default": "Try again",
+        "default": "Retry",
         "description": "Label for the button the user has to press to start over."
       },
       {
         "name": "solutionButtonText",
         "type": "text",
         "label": "Show solutions button",
-        "default": "Show solutions",
+        "default": "Solutions",
         "description": "Label for the button the user has to press to view the solutions."
       }
     ]
