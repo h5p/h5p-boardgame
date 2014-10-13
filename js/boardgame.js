@@ -14,6 +14,7 @@ H5P.Boardgame = function (options, contentId) {
 
   var $ = H5P.jQuery;
   var finished = false;
+  var self = this;
 
   var texttemplate =
           '<div class="<%= classes %>">' +
@@ -64,9 +65,6 @@ H5P.Boardgame = function (options, contentId) {
     // Insert DOM in BoardGame
     $('.boardgame', dom).append($hsd.css(HSDstyles));
 
-    $.extend(params.action.params, {
-      postUserStatistics: false
-    });
     this.action = H5P.newRunnable(params.action, contentId);
 
     // Attach event handlers
@@ -207,9 +205,7 @@ H5P.Boardgame = function (options, contentId) {
       }
       percentage = Math.floor(100*score/total);
 
-      if (params.postUserStatistics === true) {
-        H5P.setFinished(contentId, score, total);
-      }
+      self.triggerH5PxAPIEvent('completed', H5P.getxAPIScoredResult(score, total));
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
@@ -325,7 +321,7 @@ H5P.Boardgame = function (options, contentId) {
       _updateProgress();
     }
     
-    this.$.trigger('resize');
+    this.triggerH5PEvent('resize');
     
     return this;
   };
