@@ -1,24 +1,5 @@
 var H5P = H5P || {};
 
-if (H5P.getPath === undefined) {
-  /**
-   * Find the path to the content files based on the id of the content
-   *
-   * Also identifies and returns absolute paths
-   *
-   * @param {String} path Absolute path to a file, or relative path to a file in the content folder
-   * @param {Number} contentId Identifier of the content requesting the path
-   * @returns {String} The path to use.
-   */
-  H5P.getPath = function (path, contentId) {
-    if (path.substr(0, 7) === 'http://' || path.substr(0, 8) === 'https://') {
-      return path;
-    }
-
-    return H5PIntegration.getContentPath(contentId) + path;
-  };
-}
-
 /**
  * Will render a Board game.
  *
@@ -83,11 +64,10 @@ H5P.Boardgame = function (options, contentId) {
     // Insert DOM in BoardGame
     $('.boardgame', dom).append($hsd.css(HSDstyles));
 
-    var libraryObject = H5P.libraryFromString(params.action.library);
     $.extend(params.action.params, {
       postUserStatistics: false
     });
-    this.action = new (H5P.classFromName(libraryObject.machineName))(params.action.params, contentId);
+    this.action = H5P.newRunnable(params.action, contentId);
 
     // Attach event handlers
     $hsd.click(function () {
@@ -344,7 +324,9 @@ H5P.Boardgame = function (options, contentId) {
       });
       _updateProgress();
     }
-
+    
+    this.$.trigger('resize');
+    
     return this;
   };
   
@@ -417,6 +399,7 @@ H5P.Boardgame = function (options, contentId) {
     endGame: _displayEndGame,
     defaults: defaults, // Provide defaults for inspection
     getCopyrights: getCopyrights
-  }
+  };
+
   return returnObject;
 };
