@@ -214,18 +214,23 @@ H5P.Boardgame = function (options, contentId) {
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
 
-      // Knapp til fasit
-      if ($('.bgi-solution', $myDom).length === 0) {
-        $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
-          for (var i = 0; i < params.hotspots.length; i++) {
-            hotspots[i].action.showSolutions();
-          }
-          slideDown();
-        }).appendTo('.bgi-content .buttons', $myDom);
-      }
+      if (total > score) {
+        // Knapp til fasit
+        if ($('.bgi-solution', $myDom).length === 0) {
+          $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+            for (var i = 0; i < params.hotspots.length; i++) {
+              hotspots[i].action.showSolutions();
+            }
+            slideDown();
+          }).appendTo('.bgi-content .buttons', $myDom);
+        }
 
-      // Knapp til å begynne på nytt
-      $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
+        // Knapp til å begynne på nytt
+        $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
+      }
+      else {
+         $('.bgi-content .bgi-start', $myDom).hide();
+      }
 
       // Slutt-text
       $('.boardgame-intro', $myDom).addClass('open').css('bottom', '');
