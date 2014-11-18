@@ -384,9 +384,11 @@ H5P.Boardgame = function (options, contentId) {
     }
     
     // Finished video
-    var video = params.gameFinished.video[0];
-    if (video.copyright !== undefined) {
-      info.addMedia(new H5P.MediaCopyright(video.copyright));
+    if (params.gameFinished.video) {
+      var video = params.gameFinished.video[0];
+      if (video.copyright !== undefined) {
+        info.addMedia(new H5P.MediaCopyright(video.copyright));
+      }
     }
   
     return info;
