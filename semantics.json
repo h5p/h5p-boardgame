@@ -224,7 +224,7 @@
         "name": "retryButtonText",
         "type": "text",
         "label": "Retry button text",
-        "default": "Retry",
+        "default": "Try more",
         "description": "Label for the button the user has to press to start over."
       },
       {

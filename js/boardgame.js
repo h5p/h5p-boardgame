@@ -89,14 +89,14 @@ H5P.Boardgame = function (options, contentId) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.passedImage.path, contentId) + '")'});
           }
           else {
-            $hsd.addClass('h5p-passed');
+            $hsd.addClass('h5p-passed').removeClass('h5p-failed');
           }
         } else {
           if (hs_params.failedImage !== undefined) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.failedImage.path, contentId) + '")'});
           }
           else {
-            $hsd.addClass('h5p-failed');
+            $hsd.addClass('h5p-failed').removeClass('h5p-passed');
           }
         }
 
@@ -214,18 +214,23 @@ H5P.Boardgame = function (options, contentId) {
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
 
-      // Knapp til fasit
-      if ($('.bgi-solution', $myDom).length === 0) {
-        $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
-          for (var i = 0; i < params.hotspots.length; i++) {
-            hotspots[i].action.showSolutions();
-          }
-          slideDown();
-        }).appendTo('.bgi-content .buttons', $myDom);
-      }
+      if (total > score) {
+        // Knapp til fasit
+        if ($('.bgi-solution', $myDom).length === 0) {
+          $('<a class="button bgi-solution">' + params.endResults.solutionButtonText + '</a>').click(function () {
+            for (var i = 0; i < params.hotspots.length; i++) {
+              hotspots[i].action.showSolutions();
+            }
+            slideDown();
+          }).appendTo('.bgi-content .buttons', $myDom);
+        }
 
-      // Knapp til å begynne på nytt
-      $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
+        // Knapp til å begynne på nytt
+        $('.bgi-content .bgi-start', $myDom).text(params.endResults.retryButtonText);
+      }
+      else {
+         $('.bgi-content .bgi-start', $myDom).hide();
+      }
 
       // Slutt-text
       $('.boardgame-intro', $myDom).addClass('open').css('bottom', '');
@@ -384,9 +389,11 @@ H5P.Boardgame = function (options, contentId) {
     }
     
     // Finished video
-    var video = params.gameFinished.video[0];
-    if (video.copyright !== undefined) {
-      info.addMedia(new H5P.MediaCopyright(video.copyright));
+    if (params.gameFinished.video) {
+      var video = params.gameFinished.video[0];
+      if (video.copyright !== undefined) {
+        info.addMedia(new H5P.MediaCopyright(video.copyright));
+      }
     }
   
     return info;
