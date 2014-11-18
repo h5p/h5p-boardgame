@@ -89,14 +89,14 @@ H5P.Boardgame = function (options, contentId) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.passedImage.path, contentId) + '")'});
           }
           else {
-            $hsd.addClass('h5p-passed');
+            $hsd.addClass('h5p-passed').removeClass('h5p-failed');
           }
         } else {
           if (hs_params.failedImage !== undefined) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.failedImage.path, contentId) + '")'});
           }
           else {
-            $hsd.addClass('h5p-failed');
+            $hsd.addClass('h5p-failed').removeClass('h5p-passed');
           }
         }
 
