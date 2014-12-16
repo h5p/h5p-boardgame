@@ -28,6 +28,8 @@ H5P.Boardgame = function (options, contentId) {
           '  </div>' +
           '</div>';
 
+  var overrideOptions = options.override;
+
   // An internal Object only available to Board games.
   function HotSpot(dom, hs_params) {
     var defaults = {
@@ -64,7 +66,9 @@ H5P.Boardgame = function (options, contentId) {
     // Insert DOM in BoardGame
     $('.boardgame', dom).append($hsd.css(HSDstyles));
 
+    //Extend override settings for subcontent.
     $.extend(params.action.params, {
+      override: overrideOptions,
       postUserStatistics: false
     });
     this.action = H5P.newRunnable(params.action, contentId);
@@ -143,7 +147,7 @@ H5P.Boardgame = function (options, contentId) {
 
   var params = $.extend(true, {}, defaults, options);
 
-  params.classes = 'boardgame'
+  params.classes = 'boardgame';
 
   if (params.shadow) {
     params.classes += ' shadow';
