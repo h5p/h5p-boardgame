@@ -268,6 +268,10 @@
   left: -9999px;
 }
 
+.boardgame .h5p-multichoice-check-button, .boardgame .h5p-check-answer {
+  display: none !important;
+}
+
 .boardgame .qs-startbutton {
   font-size: 2.5em;
 }
