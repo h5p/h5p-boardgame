@@ -224,7 +224,7 @@
         "name": "retryButtonText",
         "type": "text",
         "label": "Retry button text",
-        "default": "Retry",
+        "default": "Try more",
         "description": "Label for the button the user has to press to start over."
       },
       {
@@ -233,6 +233,35 @@
         "label": "Show solutions button",
         "default": "Solutions",
         "description": "Label for the button the user has to press to view the solutions."
+      }
+    ]
+  },
+  {
+    "name": "override",
+    "type": "group",
+    "label": "Settings for \"Show solution\" button and \"Retry\".",
+    "description": "These options will let you override when to display \"Show solution\" button and \"Retry\" in integrated h5p content.",
+    "fields": [
+      {
+        "name": "overrideButtons",
+        "type": "boolean",
+        "label": "Enable override for \"Show solution\" and \"Retry\" settings.",
+        "description": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
+        "default": false
+      },
+      {
+        "name": "overrideShowSolutionButton",
+        "type": "boolean",
+        "label": "Enable \"Show solution\" buttons.",
+        "description": "Enabling this option will make questions show the \"Show solution\" button.",
+        "default": false
+      },
+      {
+        "name": "overrideRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\".",
+        "description": "Enabling this option will make the user able to \"Retry\" .",
+        "default": false
       }
     ]
   }

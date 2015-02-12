@@ -4,7 +4,9 @@
   "majorVersion": 1,
   "minorVersion": 1,
   "patchVersion": 0,
-  "embedTypes": ["iframe"],
+  "embedTypes": [
+    "iframe"
+  ],
   "runnable": 1,
   "machineName": "H5P.Boardgame",
   "author": "Amendor AS",
