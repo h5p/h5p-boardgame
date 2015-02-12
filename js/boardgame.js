@@ -11,8 +11,10 @@ H5P.Boardgame = function (options, contentId) {
   if (!(this instanceof H5P.Boardgame)) {
     return new H5P.Boardgame(options, contentId);
   }
+  this.contentId = contentId;
+  H5P.EventDispatcher.call(this);
 
-  var $ = H5P.jQuery;
+  
   var finished = false;
   var self = this;
 
@@ -264,7 +266,7 @@ H5P.Boardgame = function (options, contentId) {
   };
 
   // Function for attaching to a DOM element.
-  var attach = function (target) {
+  this.attach = function (target) {
     var $target;
     if (typeof(target) === 'string') {
       $target = $('#' + target);
@@ -347,7 +349,7 @@ H5P.Boardgame = function (options, contentId) {
    *
    * @returns {H5P.ContentCopyrights}
    */
-  var getCopyrights = function () {
+  this.getCopyrights = function () {
     var info = new H5P.ContentCopyrights();
 
     // Background
@@ -387,15 +389,7 @@ H5P.Boardgame = function (options, contentId) {
   
     return info;
   };
-
-  // Masquerade the main object to hide inner properties and functions.
-  var returnObject = {
-    $: $(this),
-    attach: attach, // Attach to DOM object
-    endGame: _displayEndGame,
-    defaults: defaults, // Provide defaults for inspection
-    getCopyrights: getCopyrights
-  };
-
-  return returnObject;
 };
+
+H5P.Boardgame.prototype = Object.create(H5P.EventDispatcher.prototype);
+H5P.Boardgame.prototype.constructor = H5P.Boardgame;
