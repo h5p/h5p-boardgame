@@ -217,7 +217,7 @@ H5P.Boardgame = function (options, contentId) {
       }
       percentage = Math.floor(100*score/total);
 
-      that.triggerXAPICompleted(score, total);
+      self.triggerXAPICompleted(score, total);
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
@@ -243,13 +243,12 @@ H5P.Boardgame = function (options, contentId) {
       // Slutt-text
       $('.boardgame-intro', $myDom).addClass('open').css('bottom', '');
     };
-
     // Show animation if present
-    if (params.gameFinished !== undefined) {
+    if (params.gameFinished !== undefined && params.gameFinished.video !== undefined) {
       var $videoContainer = $('<div class="video-container"></div>').appendTo($myDom.children('.boardgame'));
 
       var video = new H5P.Video({
-        files: params.gameFinished.video,
+        sources: params.gameFinished.video,
         fitToWrapper: true,
         controls: false,
         autoplay: true
