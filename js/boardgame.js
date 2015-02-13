@@ -8,6 +8,7 @@ var H5P = H5P || {};
  * @returns {H5P.Boardgame} Instance
  */
 H5P.Boardgame = function (options, contentId) {
+  var $ = H5P.jQuery;
   if (!(this instanceof H5P.Boardgame)) {
     return new H5P.Boardgame(options, contentId);
   }
@@ -35,6 +36,7 @@ H5P.Boardgame = function (options, contentId) {
 
   // An internal Object only available to Board games.
   function HotSpot(dom, hs_params) {
+    H5P.EventDispatcher.call(this);
     var defaults = {
       title: 'Hotspot',
       image: undefined,
@@ -83,14 +85,14 @@ H5P.Boardgame = function (options, contentId) {
 
       // - Attach action
       that.action.attach('action-container');
-      $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
+      that.action.on('h5pQuestionSetFinished', function (event) {
         $('#action-container', dom).remove();
         that.action.reRender();
         // Update score in hotspot info
-        $hsd.attr('title', $hsd.attr('data-title') + ': ' + result.score);
+        $hsd.attr('title', $hsd.attr('data-title') + ': ' + event.data.score);
         // Switch background image to passed image.
-        that.passed = result.passed;
-        if (result.passed) {
+        that.passed = event.data.passed;
+        if (that.passed) {
           if (hs_params.passedImage !== undefined) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.passedImage.path, contentId) + '")'});
           }
@@ -107,13 +109,15 @@ H5P.Boardgame = function (options, contentId) {
         }
 
         // Trigger further event to boardgame to calculate total score?
-        $(that).trigger('hotspotFinished', result);
+        that.trigger(event);
       });
       var $qs = $('.questionset', dom);
       $qs.children('.question-container').css('maxHeight', ($qs.height() - $qs.children('.qs-footer').height() - 20) + 'px');
       return false;
     });
   }
+  HotSpot.prototype = Object.create(H5P.EventDispatcher.prototype);
+  HotSpot.prototype.constructor = HotSpot;
 
   var defaults = {
     title: 'New game',
@@ -213,7 +217,7 @@ H5P.Boardgame = function (options, contentId) {
       }
       percentage = Math.floor(100*score/total);
 
-      self.triggerH5PxAPIEvent('completed', H5P.getxAPIScoredResult(score, total));
+      that.triggerXAPICompleted(score, total);
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
@@ -312,7 +316,7 @@ H5P.Boardgame = function (options, contentId) {
       var spot = new HotSpot($myDom, params.hotspots[i]);
       hotspots.push(spot);
       // Set event listeners.
-      $(spot).on('hotspotFinished', function (ev, result) {
+      spot.on('h5pQuestionSetFinished', function (event) {
         _updateProgress();
         _checkIfFinished();
       });
@@ -334,7 +338,7 @@ H5P.Boardgame = function (options, contentId) {
       _updateProgress();
     }
     
-    this.triggerH5PEvent('resize');
+    this.trigger('resize');
     
     return this;
   };
