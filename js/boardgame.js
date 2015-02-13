@@ -261,7 +261,7 @@ H5P.Boardgame = function (options, contentId) {
 
       if (params.gameFinished.allowSkipVideo) {
         $('<a class="button skip">' + params.gameFinished.skipButtonText + '</a>').click(function () {
-          video.stop();
+          video.pause();
           $videoContainer.hide();
           displayResults();
         }).appendTo($videoContainer);
