@@ -253,10 +253,12 @@ H5P.Boardgame = function (options, contentId) {
         controls: false,
         autoplay: true
       }, contentId);
-      video.endedCallback = function () {
-        displayResults();
-        $videoContainer.hide();
-      };
+      video.on('stateChange', function (event) {
+        if (event.data === Video.ENDED) {
+          displayResults();
+          $videoContainer.hide();
+        }
+      });
       video.attach($videoContainer);
 
       if (params.gameFinished.allowSkipVideo) {
