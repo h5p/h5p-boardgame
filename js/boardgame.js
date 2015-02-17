@@ -254,7 +254,7 @@ H5P.Boardgame = function (options, contentId) {
         autoplay: true
       }, contentId);
       video.on('stateChange', function (event) {
-        if (event.data === Video.ENDED) {
+        if (event.data === H5P.Video.ENDED) {
           displayResults();
           $videoContainer.hide();
         }
