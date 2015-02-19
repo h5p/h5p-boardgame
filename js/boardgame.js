@@ -8,12 +8,16 @@ var H5P = H5P || {};
  * @returns {H5P.Boardgame} Instance
  */
 H5P.Boardgame = function (options, contentId) {
+  var $ = H5P.jQuery;
   if (!(this instanceof H5P.Boardgame)) {
     return new H5P.Boardgame(options, contentId);
   }
+  this.contentId = contentId;
+  H5P.EventDispatcher.call(this);
 
-  var $ = H5P.jQuery;
+  
   var finished = false;
+  var self = this;
 
   var texttemplate =
           '<div class="<%= classes %>">' +
@@ -32,6 +36,7 @@ H5P.Boardgame = function (options, contentId) {
 
   // An internal Object only available to Board games.
   function HotSpot(dom, hs_params) {
+    H5P.EventDispatcher.call(this);
     var defaults = {
       title: 'Hotspot',
       image: undefined,
@@ -69,7 +74,6 @@ H5P.Boardgame = function (options, contentId) {
     //Extend override settings for subcontent.
     $.extend(params.action.params, {
       override: overrideOptions,
-      postUserStatistics: false
     });
     this.action = H5P.newRunnable(params.action, contentId);
 
@@ -81,14 +85,14 @@ H5P.Boardgame = function (options, contentId) {
 
       // - Attach action
       that.action.attach('action-container');
-      $(that.action).on('h5pQuestionSetFinished', function (ev, result) {
+      that.action.on('h5pQuestionSetFinished', function (event) {
         $('#action-container', dom).remove();
         that.action.reRender();
         // Update score in hotspot info
-        $hsd.attr('title', $hsd.attr('data-title') + ': ' + result.score);
+        $hsd.attr('title', $hsd.attr('data-title') + ': ' + event.data.score);
         // Switch background image to passed image.
-        that.passed = result.passed;
-        if (result.passed) {
+        that.passed = event.data.passed;
+        if (that.passed) {
           if (hs_params.passedImage !== undefined) {
             $hsd.css({backgroundImage: 'url("' + H5P.getPath(hs_params.passedImage.path, contentId) + '")'});
           }
@@ -105,13 +109,15 @@ H5P.Boardgame = function (options, contentId) {
         }
 
         // Trigger further event to boardgame to calculate total score?
-        $(that).trigger('hotspotFinished', result);
+        that.trigger(event);
       });
       var $qs = $('.questionset', dom);
       $qs.children('.question-container').css('maxHeight', ($qs.height() - $qs.children('.qs-footer').height() - 20) + 'px');
       return false;
     });
   }
+  HotSpot.prototype = Object.create(H5P.EventDispatcher.prototype);
+  HotSpot.prototype.constructor = HotSpot;
 
   var defaults = {
     title: 'New game',
@@ -211,9 +217,7 @@ H5P.Boardgame = function (options, contentId) {
       }
       percentage = Math.floor(100*score/total);
 
-      if (params.postUserStatistics === true) {
-        H5P.setFinished(contentId, score, total);
-      }
+      self.triggerXAPICompleted(score, total);
 
       var str = params.endResults.text.replace('@score', score).replace('@total', total).replace('@percentage', percentage);
       $('.h5p-bg-intro', $myDom).html(str);
@@ -239,26 +243,27 @@ H5P.Boardgame = function (options, contentId) {
       // Slutt-text
       $('.boardgame-intro', $myDom).addClass('open').css('bottom', '');
     };
-
     // Show animation if present
-    if (params.gameFinished !== undefined) {
+    if (params.gameFinished !== undefined && params.gameFinished.video !== undefined) {
       var $videoContainer = $('<div class="video-container"></div>').appendTo($myDom.children('.boardgame'));
 
       var video = new H5P.Video({
-        files: params.gameFinished.video,
+        sources: params.gameFinished.video,
         fitToWrapper: true,
         controls: false,
         autoplay: true
       }, contentId);
-      video.endedCallback = function () {
-        displayResults();
-        $videoContainer.hide();
-      };
+      video.on('stateChange', function (event) {
+        if (event.data === H5P.Video.ENDED) {
+          displayResults();
+          $videoContainer.hide();
+        }
+      });
       video.attach($videoContainer);
 
       if (params.gameFinished.allowSkipVideo) {
         $('<a class="button skip">' + params.gameFinished.skipButtonText + '</a>').click(function () {
-          video.stop();
+          video.pause();
           $videoContainer.hide();
           displayResults();
         }).appendTo($videoContainer);
@@ -277,7 +282,7 @@ H5P.Boardgame = function (options, contentId) {
   };
 
   // Function for attaching to a DOM element.
-  var attach = function (target) {
+  this.attach = function (target) {
     var $target;
     if (typeof(target) === 'string') {
       $target = $('#' + target);
@@ -312,7 +317,7 @@ H5P.Boardgame = function (options, contentId) {
       var spot = new HotSpot($myDom, params.hotspots[i]);
       hotspots.push(spot);
       // Set event listeners.
-      $(spot).on('hotspotFinished', function (ev, result) {
+      spot.on('h5pQuestionSetFinished', function (event) {
         _updateProgress();
         _checkIfFinished();
       });
@@ -334,7 +339,7 @@ H5P.Boardgame = function (options, contentId) {
       _updateProgress();
     }
     
-    this.$.trigger('resize');
+    this.trigger('resize');
     
     return this;
   };
@@ -360,7 +365,7 @@ H5P.Boardgame = function (options, contentId) {
    *
    * @returns {H5P.ContentCopyrights}
    */
-  var getCopyrights = function () {
+  this.getCopyrights = function () {
     var info = new H5P.ContentCopyrights();
 
     // Background
@@ -402,15 +407,7 @@ H5P.Boardgame = function (options, contentId) {
   
     return info;
   };
-
-  // Masquerade the main object to hide inner properties and functions.
-  var returnObject = {
-    $: $(this),
-    attach: attach, // Attach to DOM object
-    endGame: _displayEndGame,
-    defaults: defaults, // Provide defaults for inspection
-    getCopyrights: getCopyrights
-  };
-
-  return returnObject;
 };
+
+H5P.Boardgame.prototype = Object.create(H5P.EventDispatcher.prototype);
+H5P.Boardgame.prototype.constructor = H5P.Boardgame;
