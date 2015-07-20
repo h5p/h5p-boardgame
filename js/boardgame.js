@@ -284,6 +284,8 @@ H5P.Boardgame = function (options, contentId) {
   // Function for attaching to a DOM element.
   this.attach = function (target) {
     var $target;
+    this.setActivityStarted();
+    
     if (typeof(target) === 'string') {
       $target = $('#' + target);
     }
