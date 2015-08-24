@@ -10,7 +10,7 @@
     },
     {
       "label": "Taille du plateau",
-      "description": "Indiquez quelle taille (en px) doit avoir le plateau de jeu. Le ratio doit correspondre à l'une de vos images d'arrière-plan.",
+      "description": "Indiquez quelle taille (en px) doit avoir le plateau de jeu. Le ratio doit correspondre à l'une de vos images d'arrière-plan."
     },
     {
       "label": "Activer le contour ombragé",
