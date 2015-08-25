@@ -10,7 +10,11 @@
     },
     {
       "label": "Taille du plateau",
-      "description": "Indiquez quelle taille (en px) doit avoir le plateau de jeu. Le ratio doit correspondre à l'une de vos images d'arrière-plan."
+      "description": "Indiquez quelle taille (en px) doit avoir le plateau de jeu. Le ratio doit correspondre à l'une de vos images d'arrière-plan.",
+      "fields": [
+        {},
+        {}
+      ]
     },
     {
       "label": "Activer le contour ombragé",
@@ -55,7 +59,12 @@
           },
           {
             "label": "Place du mini-jeu",
-            "description": "Place du mini-jeu sur le plateau, les coordonnées sont entrées en pixels."
+            "description": "Place du mini-jeu sur le plateau, les coordonnées sont entrées en pixels.",
+            "default": {},
+            "fields": [
+              {},
+              {}
+            ]
           },
           {
             "label": "Action",
@@ -72,11 +81,18 @@
         },
         {
           "entity": "Image",
-          "description": "Choisissez les images à utiliser pour visualiser la progression. Une pour chaque étape franchie et une pour les étapes restant à franchir."
+          "description": "Choisissez les images à utiliser pour visualiser la progression. Une pour chaque étape franchie et une pour les étapes restant à franchir.",
+          "field": {
+            "label": 0
+          }
         },
         {
           "label": "Position de l'indicateur de progression",
-          "description": "Position de l'indicateur de progression, les coordonnées sont entrées en pixels."
+          "description": "Position de l'indicateur de progression, les coordonnées sont entrées en pixels.",
+          "fields": [
+            {},
+            {}
+          ]
         }
       ]
     },
@@ -131,7 +147,7 @@
         },
         {
           "label": "Afficher le bouton \"Réessayer\".",
-          "description": "Affiche le bouton \"Réessayer\"."
+          "description": "Affiche le bouton \"Réessayer\" ."
         }
       ]
     }
