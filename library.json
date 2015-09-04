@@ -1,8 +1,8 @@
 {
-  "title": "Boardgame",
+  "title": "Board Game",
   "description": "The user is presented with a board with several hotspots. By clicking a hotspot he invokes a mini-game.",
   "majorVersion": 1,
-  "minorVersion": 3,
+  "minorVersion": 4,
   "patchVersion": 0,
   "embedTypes": [
     "iframe"
@@ -12,7 +12,7 @@
   "author": "Amendor AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 5
+    "minorVersion": 6
   },
   "license": "cc-by-sa",
   "preloadedDependencies": [
