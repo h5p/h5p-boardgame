@@ -195,8 +195,22 @@
 .boardgame .questionset-results > .buttons {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
 }
+
+.boardgame .questionset-results > .buttons > .h5p-joubelui-button {
+  display: inline-block;
+}
+
+.boardgame .questionset-results .feedback-section {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .questionset > .title {
   margin: 1em;
 }

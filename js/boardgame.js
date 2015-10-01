@@ -15,7 +15,7 @@ H5P.Boardgame = function (options, contentId) {
   this.contentId = contentId;
   H5P.EventDispatcher.call(this);
 
-  
+
   var finished = false;
   var self = this;
 
@@ -86,7 +86,7 @@ H5P.Boardgame = function (options, contentId) {
       // - Attach action
       that.action.attach('action-container');
       that.action.on('h5pQuestionSetFinished', function (event) {
-        $('#action-container', dom).remove();
+        $('#action-container', dom).detach();
         that.action.reRender();
         // Update score in hotspot info
         $hsd.attr('title', $hsd.attr('data-title') + ': ' + event.data.score);
@@ -285,7 +285,7 @@ H5P.Boardgame = function (options, contentId) {
   this.attach = function (target) {
     var $target;
     this.setActivityStarted();
-    
+
     if (typeof(target) === 'string') {
       $target = $('#' + target);
     }
@@ -340,12 +340,12 @@ H5P.Boardgame = function (options, contentId) {
       });
       _updateProgress();
     }
-    
+
     this.trigger('resize');
-    
+
     return this;
   };
-  
+
   /**
    * Helper function for getting image copyrights.
    *
@@ -356,12 +356,12 @@ H5P.Boardgame = function (options, contentId) {
     if (image === undefined || image.copyright === undefined) {
       return;
     }
-    
+
     var mediaCopyright = new H5P.MediaCopyright(image.copyright);
     mediaCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(image.path, contentId), image.width, image.height));
     return mediaCopyright;
   };
-  
+
   /**
    * Gather copyright information for the current content.
    *
@@ -372,7 +372,7 @@ H5P.Boardgame = function (options, contentId) {
 
     // Background
     info.addMedia(getImageCopyright(params.background));
-    
+
     // Hotspots
     for (var i = 0; i < hotspots.length; i++) {
       var hotspot = hotspots[i];
@@ -380,25 +380,25 @@ H5P.Boardgame = function (options, contentId) {
         var hotRights = hotspot.action.getCopyrights();
         if (hotRights !== undefined) {
           hotRights.setLabel('Hotspot ' + (i+1)); // TODO: Change/translate
-          
+
           var hps = params.hotspots[i];
           // Hotspot image
-          hotRights.addMedia(getImageCopyright(hps.image));          
+          hotRights.addMedia(getImageCopyright(hps.image));
           // Hotspot passed image
           hotRights.addMedia(getImageCopyright(hps.passedImage));
           // Hotspot failed image
           hotRights.addMedia(getImageCopyright(hps.failedImage));
-          
+
           info.addContent(hotRights);
         }
       }
     }
-    
+
     // Progress images
     for (var i = 0; i < params.progress.images.length; i++) {
        info.addMedia(getImageCopyright(params.progress.images[i]));
     }
-    
+
     // Finished video
     if (params.gameFinished.video) {
       var video = params.gameFinished.video[0];
@@ -406,7 +406,7 @@ H5P.Boardgame = function (options, contentId) {
         info.addMedia(new H5P.MediaCopyright(video.copyright));
       }
     }
-  
+
     return info;
   };
 };
