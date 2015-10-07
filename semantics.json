@@ -130,7 +130,7 @@
           "label": "Action",
           "description": "Choose the minigame to start when the user chooses this hotspot.",
           "options": [
-            "H5P.QuestionSet 1.4"
+            "H5P.QuestionSet 1.5"
           ]
         }
       ]
