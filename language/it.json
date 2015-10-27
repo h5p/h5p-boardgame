@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Titolo del gioco",
-      "description": "Questo � il titolo del gioco che si sta creando."
+      "description": "Questo è il titolo del gioco che si sta creando."
     },
     {
       "label": "Sfondo del tavolo",
@@ -18,14 +18,14 @@
     },
     {
       "label": "Abilita ombreggiatura",
-      "description": "Abilita un'ombreggiatura attorno al tavolo. Se abilitata il tavolo occupa pi� spazio rispetto alle dimensioni che il tavolo suggerisce."
+      "description": "Abilita un'ombreggiatura attorno al tavolo. Se abilitata il tavolo occupa più spazio rispetto alle dimensioni che il tavolo suggerisce."
     },
     {
       "label": "Introduzione gioco",
       "fields": [
         {
           "label": "Testo di benvenuto e istruzioni",
-          "description": "Spiegare ci� che l'utente deve fare e lo scopo del gioco."
+          "description": "Spiegare ciò che l'utente deve fare e lo scopo del gioco."
         },
         {
           "label": "Testo pulsante",
@@ -42,7 +42,7 @@
         "fields": [
           {
             "label": "Titolo",
-            "description": "D�i un nome al tuo punto focale."
+            "description": "Dài un nome al tuo punto focale."
           },
           {
             "label": "Immagine punto focale",
@@ -50,11 +50,11 @@
           },
           {
             "label": "Hotspot immagine - Superato",
-            "description": "L'immagine del punto focale sar� cos� modificata una volta che l'utente ha completato e superato un minigioco."
+            "description": "L'immagine del punto focale sarà così modificata una volta che l'utente ha completato e superato un minigioco."
           },
           {
             "label": "Hotspot immagine - Fallito",
-            "description": "L'immagine del punto focale sar� cos� modificata una volta che l'utente non ha superato un minigioco."
+            "description": "L'immagine del punto focale sarà così modificata una volta che l'utente non ha superato un minigioco."
           },
           {
             "label": "Posizione punto focale",
@@ -134,15 +134,15 @@
       "fields": [
         {
           "label": "Abilita ignora impostazioni per \"Mostra soluzione\" e \"Riprova\".",
-          "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
+          "description": "Se questa opzione è abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
         },
         {
           "label": "Abilita pulsanti \"Mostra soluzione\".",
-          "description": "L'attivazione di questa opzione far� in modo che le domande mostrino il tasto \"Mostra soluzione\"."
+          "description": "L'attivazione di questa opzione farà in modo che le domande mostrino il tasto \"Mostra soluzione\"."
         },
         {
           "label": "Abilita \"Riprova\".",
-          "description": "L'attivazione di questa opzione far� in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
+          "description": "L'attivazione di questa opzione farà in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
         }
       ]
     }
