@@ -3,7 +3,7 @@
     {
       "label": "Spieltitel",
       "placeholder": "Arktisches Wissen",
-      "description": "Dies ist der Titel des Spiels, das erstellt wird."
+      "description": "Dies ist der Titel des Spiels das erstellt wird."
     },
     {
       "label": "Hintergrund des Spielbretts",
@@ -22,7 +22,7 @@
     },
     {
       "label": "Schlagschatten aktivieren",
-      "description": "Aktivieren eines Schlagschattens um das Spielbrett herum. Wenn dies aktiviert wird, dann braucht das Spielbrett mehr Platz als die vorgeschlagene Spielbrettgröße",
+      "description": "Aktivieren eines Schlagschattens um das Spielbrett herum. Wenn dies aktiviert wird, dann braucht das Spielbrett mehr Platz als die vorgeschlagene Spielbrettgröße"
     },
     {
       "label": "Spieleinführung",
@@ -30,20 +30,20 @@
         {
           "tags": [],
           "label": "Willkommens- und Einführungstext",
-          "placeholder": "Grüße, junger Reisender! Bist du bereit, dein Wissen über die Arktis zu testen?",
-          "description": "Erklärung darüber, was der Benutzer zu tun hat und was das Ziel des Spieles ist."
+          "placeholder": "Grüße, junger Reisender! Bist du bereit dein Wissen über die Arktis zu testen?",
+          "description": "Erklärung darüber was der Benutzer zu tun hat und was das Ziel des Spieles ist."
         },
         {
           "label": "Buttontext",
           "default": "Start",
           "placeholder": "Start",
-          "description": "Label des Buttons, den der Benutzer zum Starten des Spiels betätigen muss."
+          "description": "Label des Buttons den der Benutzer zum Starten des Spiels betätigen muss."
         }
       ]
     },
     {
       "label": "Hotspots",
-      "description": "Hotspots sind Minispiele, die auf dem Spielbrett platziert werden. Z.B. Quiz, Hangman.",
+      "description": "Hotspots sind Minispiele die auf dem Spielbrett platziert werden. z.B. Quiz, Hangman.",
       "field": {
         "label": "Hotspot",
         "fields": [
@@ -53,7 +53,7 @@
           },
           {
             "label": "Hotspotbild",
-            "description": "Bild, das auf dem Spielbrett verwendet wird, um den Hotspot zu identifizieren."
+            "description": "Bild das auf dem Spielbrett verwendet wird um den Hotspot zu identifizieren."
           },
           {
             "label": "Hotspotbild - Absolviert",
@@ -92,7 +92,7 @@
           "label": "Fortschrittsindikator aktivieren"
         },
         {
-          "description": "Wählen von Bildern, die als Fortschrittsindikator verwendet werden. Einen für jeden Fortschritt, Plus einen für bisher keine abgegebenen Antworten.",
+          "description": "Wählen von Bildern die als Fortschrittsindikator verwendet werden. Einen für jeden Fortschritt, Plus einen für bisher keine abgegebenen Antworten.",
           "field": {
           }
         },
@@ -114,7 +114,7 @@
       "fields": [
         {
           "label": "Beendendes Video",
-          "description": "Video, das gezeigt wird, bevor die Spielergebnisse angezeigt werden."
+          "description": "Video das gezeigt wird bevor die Spielergebnisse angezeigt werden."
         },
         {
           "label": "Überspringen des beendenden Videos erlauben"
@@ -122,7 +122,7 @@
         {
           "label": "Text des Überspringen Buttons",
           "default": "Video überspringen",
-          "description": "Label für den Button, den der Benutzer klicken muss, um das beendende Video zu überspringen."
+          "description": "Label für den Button den der Benutzer klicken muss um das beendende Video zu überspringen."
         }
       ]
     },
@@ -133,17 +133,17 @@
           "tags": [],
           "label": "Ergebnistext",
           "default": "Du hast @score von @total erzielt. Das sind @percentage %",
-          "description": "Der Text, der den Spielstand erklärt. Variablen: @score, @total, @percentage."
+          "description": "Der Text der den Spielstand erklärt. Variablen: @score, @total, @percentage."
         },
         {
           "label": "Text des Wiederholen Buttons",
           "default": "Nochmal versuchen",
-          "description": "Label für den Button, den der Benutzer drücken muss, um nochmals zu starten."
+          "description": "Label für den Button den der Benutzer drücken muss um nochmals zu starten."
         },
         {
           "label": "Zeige Lösungsbutton",
           "default": "Lösungen",
-          "description": "Label des Buttons, den der Benutzer drücken muss, um die Lösungen einzusehen."
+          "description": "Label des Buttons den der Benutzer drücken muss um die Lösungen einzusehen."
         }
       ]
     },
@@ -153,16 +153,17 @@
       "fields": [
         {
           "label": "Überschreibung für \"Lösung anzeigen\" und \"Wiederholen\" Einstellungen aktivieren.",
-          "description": "Wenn dies aktiviert ist, dann werden die Einstellungen der Fragen ignoriert und stattdessen die unteren Einstellungen verwendet.",
+          "description": "Wenn dies aktiviert ist, dann werden die Einstellungen der Fragen ignoriert und stattdessen die unteren Einstellungen verwendet."
         },
         {
           "label": "Aktiviere \"Lösung anzeigen\" Buttons.",
-          "description": "Das Aktivieren dieser Option wird bei Fragen den \"Lösungen anzeigen\" Button anzeigen.",
+          "description": "Das Aktivieren dieser Option wird bei Fragen den \"Lösungen anzeigen\" Button anzeigen."
         },
         {
           "label": "\"Wiederholen\" aktivieren.",
-          "description": "Die Aktivierung dieser Option wird es dem Benutzer ermöglichen zu \"Wiederholen\" .",
+          "description": "Die Aktivierung dieser Option wird es dem Benutzer ermöglichen zu \"Wiederholen\" ."
         }
       ]
     }
   ]
+}
