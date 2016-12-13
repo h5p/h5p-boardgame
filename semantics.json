@@ -72,6 +72,7 @@
     "label": "Hotspots",
     "entity": "hotspot",
     "description": "Hotspots are mini-games that are placed on the board. E.g. Quiz, Hangman.",
+    "importance": "high",
     "min": 1,
     "field": {
       "name": "hotspot",
