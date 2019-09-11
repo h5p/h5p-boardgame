@@ -1,3 +1,5 @@
+**Note: Boardgame is not maintained anymore, and no new releases are planned**
+
 H5P Boardgame
 ==========
 
